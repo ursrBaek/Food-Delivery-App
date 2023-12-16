@@ -4,13 +4,14 @@ export const Container = styled.div`
   background-color: #fff;
   position: relative;
   margin: 0 auto;
-  min-width: 320px;
+  min-width: 280px;
   max-width: 430px;
   height: 100vh;
   box-shadow: 0 9px 15px -3px rgb(0 0 0 / 30%);
   font-family: 'hanna';
   display: flex;
   flex-flow: column nowrap;
+  justify-content: space-between;
 `;
 
 export const StyledPrevButton = styled.button`
@@ -28,8 +29,6 @@ export const StyledPrevButton = styled.button`
 `;
 
 export const StyledHeader = styled.header`
-  position: sticky;
-  z-index: 1;
   top: 0;
   padding: 15px 0;
   border-bottom-width: 2px;
@@ -42,12 +41,47 @@ export const StyledHeader = styled.header`
     text-align: center;
     font-size: 30px;
     font-family: 'hanna';
-    width: 350px;
+    width: 100%;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     color: #d15c03;
     opacity: 1;
     transition: all 0.1s ease-in-out;
+  }
+`;
+
+export const MenuWrapper = styled.div`
+  border-top: 2px solid #c5c5c5;
+  background-color: #fff;
+  ul {
+    display: flex;
+    li {
+      flex: 1 1 0;
+      &:hover {
+        a {
+          .icon {
+            color: #d15c03;
+          }
+        }
+      }
+
+      a {
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        height: 70px;
+        .icon {
+          width: 100%;
+          color: #b19986;
+          font-size: 30px;
+          line-height: 69px;
+
+          &.select {
+            color: #d15c03;
+          }
+        }
+      }
+    }
   }
 `;
