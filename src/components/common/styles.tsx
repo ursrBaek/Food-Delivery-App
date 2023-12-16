@@ -26,3 +26,28 @@ export const StyledPrevButton = styled.button`
     color: #d15c03;
   }
 `;
+
+export const StyledHeader = styled.header`
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  padding: 15px 0;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(192, 192, 192);
+  background-color: #fff;
+
+  h1 {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'hanna';
+    width: 350px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #d15c03;
+    opacity: 1;
+    transition: all 0.1s ease-in-out;
+  }
+`;
