@@ -2,8 +2,11 @@ import styled from 'styled-components';
 
 export const AuthTemplateBox = styled.div`
   background-color: #fff;
-  padding: 30px 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
   img {
     display: block;
     margin: 0 auto;
@@ -12,7 +15,7 @@ export const AuthTemplateBox = styled.div`
   }
   form {
     width: 80%;
-    margin: 40px auto;
+    margin: 35px auto;
     .input-box {
       width: 100%;
       position: relative;
