@@ -82,3 +82,8 @@ legend {
   clip: rect(0 0 0 0);
   clip: rect(0, 0, 0, 0);
 }
+
+a {
+  text-decoration: none;
+  color: #000;
+}

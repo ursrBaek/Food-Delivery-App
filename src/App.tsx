@@ -3,7 +3,7 @@ import { Reset } from 'styled-reset';
 
 import { Route, Routes } from 'react-router-dom';
 
-import Main from 'components/Main';
+import Home from 'components/Home';
 import StoreList from 'components/StoreList';
 import MyPage from 'components/MyPage';
 import Bill from 'components/Bill';
@@ -20,7 +20,7 @@ function App() {
       <Reset />
       <Container>
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Home />} />
           <Route path="/likes" element={<StoreList />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/store/:category" element={<StoreList />} />
