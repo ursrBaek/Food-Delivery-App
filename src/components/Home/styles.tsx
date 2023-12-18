@@ -9,7 +9,11 @@ export const MainBox = styled.main`
   align-self: flex-start;
 `;
 
-export const StyledSection = styled.section`
+interface SectionProps {
+  idx: number;
+}
+
+export const StyledSection = styled.section<SectionProps>`
   width: 100%;
   .carouselWrap {
     width: 95%;
@@ -20,6 +24,7 @@ export const StyledSection = styled.section`
     .bannerItemContainer {
       width: auto;
       display: flex;
+      transform: translateX(${(props: SectionProps) => `calc(${(props.idx + 1) * 100}% * -1)`});
       img {
         display: inline-block;
         width: 100%;
@@ -33,7 +38,8 @@ export const StyledSection = styled.section`
       width: 40px;
       padding-bottom: 5px;
       background-color: rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(0, 0, 0, 0.685);
+      /* border: 1px solid rgba(0, 0, 0, 0.685); */
+      border: none;
       font-size: 30px;
       color: #fff;
       position: absolute;
@@ -45,6 +51,10 @@ export const StyledSection = styled.section`
       &.next {
         right: 0;
         transform: translateY(-50%);
+      }
+
+      &:hover {
+        border: 2px solid #d5f9ff;
       }
     }
   }
