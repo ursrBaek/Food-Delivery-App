@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const MainBox = styled.main`
-  margin-top: 2.5%;
   width: 100%;
   flex: 1;
   display: flex;
   flex-flow: column nowrap;
   align-self: flex-start;
+  overflow: auto;
 `;
 
 interface SectionProps {
@@ -14,6 +14,7 @@ interface SectionProps {
 }
 
 export const StyledSection = styled.section<SectionProps>`
+  margin-top: 2.5%;
   width: 100%;
   .carouselWrap {
     width: 95%;
@@ -38,7 +39,6 @@ export const StyledSection = styled.section<SectionProps>`
       width: 40px;
       padding-bottom: 5px;
       background-color: rgba(0, 0, 0, 0.3);
-      /* border: 1px solid rgba(0, 0, 0, 0.685); */
       border: none;
       font-size: 30px;
       color: #fff;
@@ -55,6 +55,44 @@ export const StyledSection = styled.section<SectionProps>`
 
       &:hover {
         border: 2px solid #d5f9ff;
+      }
+    }
+  }
+`;
+
+export const CategoryList = styled.ul`
+  display: flex;
+  flex-flow: row wrap;
+  padding: 2.5%;
+  justify-content: space-between;
+
+  li {
+    width: 49%;
+    text-align: center;
+    border-radius: 20px;
+    opacity: 0.9;
+    margin-bottom: 2%;
+    border: 2px solid #dcc8b5;
+    a {
+      height: 100%;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0;
+      font-size: 20px;
+      img {
+        width: 55%;
+        transition: all ease-out 0.3s;
+      }
+    }
+
+    &:hover {
+      background-color: #ffab3c;
+      opacity: 1;
+      img {
+        opacity: 1;
+        transform: rotate(20deg);
       }
     }
   }
