@@ -60,6 +60,17 @@ export const StyledSection = styled.section<SectionProps>`
   }
 `;
 
+export const AddSection = styled.section`
+  margin: 2.5% 2.5% 0 2.5%;
+  padding: 20px;
+  text-align: center;
+  border-radius: 7px;
+  background-color: #fb2728;
+  color: #ffffff;
+  font-size: 25px;
+  font-family: 'hanna';
+`;
+
 export const CategoryList = styled.ul`
   display: flex;
   flex-flow: row wrap;
@@ -72,7 +83,7 @@ export const CategoryList = styled.ul`
     border-radius: 20px;
     opacity: 0.9;
     margin-bottom: 2%;
-    border: 2px solid #dcc8b5;
+    background-color: #fff3e0;
     a {
       height: 100%;
       display: flex;
