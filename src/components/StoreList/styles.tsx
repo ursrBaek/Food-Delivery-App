@@ -28,10 +28,6 @@ export const StyledContainer = styled.ul`
       .store-name {
         font-weight: 900;
       }
-
-      .fa-star {
-        color: rgb(246, 246, 0);
-      }
     }
     transition: all ease-out 0.25s;
     &:hover {
