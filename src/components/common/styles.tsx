@@ -52,32 +52,37 @@ export const StyledHeader = styled.header`
 `;
 
 export const MenuWrapper = styled.div`
-  border-top: 2px solid #c5c5c5;
+  border-top: 2px solid #d1d1d1;
   background-color: #fff;
+  padding: 10px 0 15px 0;
   ul {
     display: flex;
     li {
       flex: 1 1 0;
-      &:hover {
-        a {
-          .icon {
-            color: #d15c03;
-          }
-        }
-      }
 
       a {
         display: inline-block;
         text-align: center;
         width: 100%;
-        height: 70px;
         .icon {
           width: 100%;
           color: #b19986;
           font-size: 30px;
-          line-height: 69px;
+          line-height: 40px;
+          vertical-align: bottom;
 
           &.select {
+            color: #d15c03;
+          }
+        }
+        span {
+          font-family: 'jua';
+          color: #b19986;
+          font-size: 14px;
+        }
+        &:hover {
+          .icon,
+          span {
             color: #d15c03;
           }
         }
