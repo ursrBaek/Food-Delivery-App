@@ -67,44 +67,39 @@ export const AddSection = styled.section`
   border-radius: 7px;
   background-color: #fb2728;
   color: #ffffff;
-  font-size: 25px;
+  font-size: 19px;
   font-family: 'hanna';
 `;
 
 export const CategoryList = styled.ul`
   display: flex;
   flex-flow: row wrap;
-  padding: 2.5%;
+  padding: 5% 2.5%;
   justify-content: space-between;
 
   li {
-    width: 49%;
+    width: 20%;
     text-align: center;
-    border-radius: 20px;
-    opacity: 0.9;
-    margin-bottom: 2%;
-    background-color: #fff3e0;
     a {
-      height: 100%;
       display: flex;
       flex-flow: column nowrap;
       align-items: center;
       justify-content: center;
-      padding: 10px 0;
-      font-size: 20px;
+      padding-bottom: 10px;
+      font-size: 16px;
       img {
-        width: 55%;
+        width: 90%;
+        background-color: #fff3e0;
+        border-radius: 50%;
+        padding: 3px;
         transition: all ease-out 0.3s;
+        margin-bottom: 3px;
       }
     }
 
-    &:hover {
-      background-color: #ffab3c;
-      opacity: 1;
-      img {
-        opacity: 1;
-        transform: rotate(20deg);
-      }
+    &:hover img {
+      transform: rotate(20deg);
+      background-color: #ffb742;
     }
   }
 `;
