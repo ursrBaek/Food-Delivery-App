@@ -39,3 +39,61 @@ export const StyledInputBox = styled.div`
     outline: 3px solid #ff9100;
   }
 `;
+
+export const SearchContentsContainer = styled.div`
+  padding: 2.5%;
+  overflow: auto;
+  flex-grow: 1;
+
+  h2 {
+    color: rgb(97, 99, 101);
+    font-size: 20px;
+    padding: 32px 0px 16px;
+    border-bottom: 1px solid rgb(201, 205, 210);
+    margin-bottom: 2.5%;
+  }
+  .infoMsg {
+    margin-top: 30px;
+    font-size: 20px;
+    color: rgb(162, 162, 162);
+    text-align: center;
+  }
+  ul {
+    li {
+      margin-bottom: 2.5%;
+
+      a {
+        display: flex;
+        img {
+          border-radius: 20%;
+          width: 50px;
+          height: 50px;
+          object-fit: cover;
+          margin-right: 3.5%;
+        }
+        .info {
+          flex-grow: 1;
+          .storeName {
+            font-size: 20px;
+            margin-bottom: 6px;
+            color: #404040;
+          }
+          .category {
+            font-size: 15px;
+            color: #8b8b8b;
+          }
+        }
+        i {
+          width: 39px;
+          color: #8b8b8b;
+          padding: 10px;
+          align-self: center;
+          font-size: 25px;
+          &:hover {
+            color: #e08e00;
+          }
+        }
+      }
+    }
+  }
+`;
