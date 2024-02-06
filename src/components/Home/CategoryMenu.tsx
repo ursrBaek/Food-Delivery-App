@@ -9,6 +9,7 @@ import japaneseFood from '../../assets/images/categories/japaneseFood.png';
 import koreanFood from '../../assets/images/categories/koreanFood.png';
 import pizza from '../../assets/images/categories/pizza.png';
 import schoolFood from '../../assets/images/categories/schoolFood.png';
+import salad from '../../assets/images/categories/salad.png';
 import { CategoryList } from './styles';
 
 export default function CategoryMenu() {
@@ -66,6 +67,12 @@ export default function CategoryMenu() {
         <Link to="/store/dish">
           <img src={dish} alt="안주 이미지 아이콘" />
           안주
+        </Link>
+      </li>
+      <li>
+        <Link to="/store/salad">
+          <img src={salad} alt="샐러드 이미지 아이콘" />
+          샐러드
         </Link>
       </li>
     </CategoryList>
