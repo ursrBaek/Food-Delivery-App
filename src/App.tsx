@@ -4,6 +4,7 @@ import { Reset } from 'styled-reset';
 import { Route, Routes } from 'react-router-dom';
 
 import Home from 'components/Home';
+import Search from 'components/Search';
 import StoreList from 'components/StoreList';
 import MyPage from 'components/MyPage';
 import Bill from 'components/Bill';
@@ -21,6 +22,7 @@ function App() {
       <Container>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
           <Route path="/likes" element={<StoreList />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/store/:category" element={<StoreList />} />
