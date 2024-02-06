@@ -25,7 +25,7 @@ function SignUp() {
           <AuthButton type="submit">가입하기</AuthButton>
         </fieldset>
       </form>
-      <PrevButton />
+      <PrevButton isAbsolutePosition={true} />
     </AuthTemplate>
   );
 }

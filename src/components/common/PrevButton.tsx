@@ -1,9 +1,13 @@
 import React from 'react';
 import { StyledPrevButton } from './styles';
 
-function PrevButton() {
+interface Props {
+  isAbsolutePosition?: boolean;
+}
+
+function PrevButton({ isAbsolutePosition }: Props) {
   return (
-    <StyledPrevButton>
+    <StyledPrevButton isAbsolutePosition={isAbsolutePosition}>
       <i className="fas fa-arrow-left"></i>
     </StyledPrevButton>
   );

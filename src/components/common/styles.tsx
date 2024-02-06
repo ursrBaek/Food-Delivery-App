@@ -14,12 +14,17 @@ export const Container = styled.div`
   justify-content: space-between;
 `;
 
-export const StyledPrevButton = styled.button`
-  position: absolute;
+interface prevButtonProps {
+  isAbsolutePosition?: boolean;
+}
+
+export const StyledPrevButton = styled.button<prevButtonProps>`
   cursor: pointer;
-  top: 20px;
-  left: 20px;
+  position: ${(props: prevButtonProps) => props.isAbsolutePosition && 'absolute'};
+  top: 10px;
+  left: 10px;
   font-size: 40px;
+  width: 47px;
   color: #333;
   border: none;
   background-color: inherit;
