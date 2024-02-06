@@ -13,7 +13,7 @@ function BottomMenu() {
           </Link>
         </li>
         <li>
-          <Link to="/find">
+          <Link to="/search">
             <i className="icon fa-solid fa-magnifying-glass"></i>
             <span>검색</span>
           </Link>
