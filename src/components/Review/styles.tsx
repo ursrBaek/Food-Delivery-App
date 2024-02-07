@@ -22,6 +22,7 @@ export const ReviewWrapper = styled.div`
     font-size: 35px;
     margin: 10px auto;
     text-align: center;
+    word-break: keep-all;
   }
   ul {
     display: flex;
@@ -30,8 +31,8 @@ export const ReviewWrapper = styled.div`
     margin: 20px auto;
     width: 100%;
     li {
-      width: 50px;
-      height: 50px;
+      width: 45px;
+      height: 45px;
       background-size: cover;
       cursor: pointer;
     }

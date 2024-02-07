@@ -12,7 +12,6 @@ function ReviewList() {
           <span>|</span>
           <span>리뷰 2개</span>
         </span>
-        <button>리뷰쓰기</button>
       </ReviewInfoBox>
       <ReviewItem />
       <ReviewItem />

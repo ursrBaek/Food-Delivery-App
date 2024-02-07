@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { ReviewWrapper } from './styles';
+import PrevButton from 'components/common/PrevButton';
 
 function Index() {
   const [star, setStar] = useState('1');
@@ -39,6 +40,7 @@ function Index() {
       <div className="wrap-btn">
         <button disabled>리뷰 등록</button>
       </div>
+      <PrevButton isAbsolutePosition={true} />
     </ReviewWrapper>
   );
 }
