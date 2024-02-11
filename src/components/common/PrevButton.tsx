@@ -7,7 +7,7 @@ interface Props {
 
 function PrevButton({ isAbsolutePosition }: Props) {
   return (
-    <StyledPrevButton isAbsolutePosition={isAbsolutePosition}>
+    <StyledPrevButton className={isAbsolutePosition ? 'absolutePosition' : ''}>
       <i className="fas fa-arrow-left"></i>
     </StyledPrevButton>
   );
