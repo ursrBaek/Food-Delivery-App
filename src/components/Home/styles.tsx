@@ -90,7 +90,7 @@ export const CategoryList = styled.ul`
       padding-bottom: 10px;
       font-size: 16px;
       img {
-        width: 90%;
+        width: 78%;
         background-color: #fff3e0;
         border-radius: 50%;
         padding: 3px;

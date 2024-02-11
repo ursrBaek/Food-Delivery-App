@@ -169,19 +169,6 @@ export const ReviewInfoBox = styled.div`
       margin-right: 10px;
     }
   }
-
-  button {
-    font-family: 'hannaPro';
-    border: 0;
-    background-color: transparent;
-    font-size: 20px;
-    cursor: pointer;
-    color: #d15c03;
-
-    &:hover {
-      color: #e99400;
-    }
-  }
 `;
 
 export const ReviewItemBox = styled.div`

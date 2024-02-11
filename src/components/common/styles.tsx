@@ -14,20 +14,21 @@ export const Container = styled.div`
   justify-content: space-between;
 `;
 
-interface prevButtonProps {
-  isAbsolutePosition?: boolean;
-}
-
-export const StyledPrevButton = styled.button<prevButtonProps>`
+export const StyledPrevButton = styled.button`
   cursor: pointer;
-  position: ${(props: prevButtonProps) => props.isAbsolutePosition && 'absolute'};
-  top: 10px;
-  left: 10px;
-  font-size: 40px;
+
+  font-size: 35px;
   width: 47px;
   color: #333;
   border: none;
   background-color: inherit;
+
+  &.absolutePosition {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
   &:hover {
     color: #d15c03;
   }
@@ -36,7 +37,7 @@ export const StyledPrevButton = styled.button<prevButtonProps>`
 export const StyledHeader = styled.header`
   top: 0;
   padding: 15px 0;
-  border-bottom-width: 2px;
+  border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: rgb(192, 192, 192);
   background-color: #fff;
@@ -44,7 +45,7 @@ export const StyledHeader = styled.header`
   h1 {
     margin: 0 auto;
     text-align: center;
-    font-size: 30px;
+    font-size: 27px;
     font-family: 'hanna';
     width: 100%;
     white-space: nowrap;
