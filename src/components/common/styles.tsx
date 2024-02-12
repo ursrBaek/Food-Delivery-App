@@ -96,3 +96,9 @@ export const MenuWrapper = styled.div`
     }
   }
 `;
+
+export const GrayWrapper = styled.div`
+  flex-grow: 1;
+  overflow-y: auto;
+  background-color: #eee;
+`;
