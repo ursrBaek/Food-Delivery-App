@@ -2,12 +2,6 @@ import styled from 'styled-components';
 import emptyImage from '../../assets/images/empty-img.png';
 import deleteIcon from '../../assets/images/x-icon.png';
 
-export const GrayWrapper = styled.div`
-  flex-grow: 1;
-  overflow-y: auto;
-  background-color: #eee;
-`;
-
 export const StyledOrderStoreInfoBox = styled.div`
   margin: 7px 0;
   background-color: #fff;
