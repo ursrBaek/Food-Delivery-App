@@ -25,7 +25,7 @@ function BottomMenu() {
           </Link>
         </li>
         <li>
-          <Link to="/orders">
+          <Link to="/orderHistory">
             <i className="icon fa-solid fa-file-invoice"></i>
             <span>주문내역</span>
           </Link>

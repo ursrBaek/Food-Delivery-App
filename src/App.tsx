@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from 'components/Home';
 import Search from 'components/Search';
 import StoreList from 'components/StoreList';
+import OrderHistory from 'components/OrderHistory';
 import MyPage from 'components/MyPage';
 import Bill from 'components/Bill';
 import StoreDetail from 'components/StoreDetail';
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
           <Route path="/likes" element={<StoreList />} />
+          <Route path="/orderHistory" element={<OrderHistory />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/store/:category" element={<StoreList />} />
           <Route path="/bill" element={<Bill />} />
