@@ -15,6 +15,7 @@ import Review from 'components/Review';
 import Login from 'components/Login';
 import SignUp from 'components/SignUp';
 import { Container } from 'components/common/styles';
+import OrderInfoDetail from 'components/OrderInfoDetail';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/bill" element={<Bill />} />
           <Route path="/store/detail/:storeId" element={<StoreDetail />} />
           <Route path="/order/:storeId" element={<Order />} />
+          <Route path="/orderDetail/:orderId" element={<OrderInfoDetail />} />
           <Route path="/review/:storeId" element={<Review />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
