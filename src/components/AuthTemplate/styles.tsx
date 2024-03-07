@@ -37,12 +37,16 @@ export const AuthTemplateBox = styled.div`
         }
       }
     }
+    p {
+      text-align: center;
+      font-size: 17px;
+      word-break: keep-all;
+    }
   }
   .join,
   .home {
     font-family: 'hanna';
     text-align: center;
-    width: 320px;
     margin: 10px auto;
     font-size: 20px;
     a {
