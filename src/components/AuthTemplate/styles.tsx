@@ -68,4 +68,16 @@ export const AuthButton = styled.button`
   &:hover {
     background-color: #e99400;
   }
+
+  &[disabled] {
+    background-color: #c0c0c0;
+  }
+`;
+
+export const Error = styled.p`
+  color: #c30000;
+`;
+
+export const Success = styled.p`
+  color: #00710b;
 `;
