@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import React, { ChangeEvent, useCallback, useState } from 'react';
 import AuthTemplate from '../AuthTemplate';
 import { AuthButton, Error, Success } from '../AuthTemplate/styles';
 import PrevButton from 'components/common/PrevButton';
@@ -132,6 +132,9 @@ function SignUp() {
       }, 5000);
     }
   };
+
+  // === 로그인 상태 확인해서 홈으로 돌려보내기
+  // ==================================
 
   return (
     <AuthTemplate>
