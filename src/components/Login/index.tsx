@@ -5,12 +5,14 @@ import { AuthButton, Error } from 'components/AuthTemplate/styles';
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
+import { useIsLogin } from 'store';
 
 const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const pwReg = /^[a-zA-Z0-9]{6,15}$/;
 
 export default function Login() {
   const navigate = useNavigate();
+  const isLogin = useIsLogin();
 
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
@@ -19,7 +21,7 @@ export default function Login() {
   const [pwCheckError, setPwCheckError] = useState('');
   const [loginError, setLoginError] = useState('');
 
-  const onChangeEmail = useCallback((e: ChangeEvent) => {
+  const onChangeEmail = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
 
     setLoginError('');
@@ -32,7 +34,7 @@ export default function Login() {
     }
   }, []);
 
-  const onChangePw = useCallback((e: ChangeEvent) => {
+  const onChangePw = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
 
     setLoginError('');
@@ -47,6 +49,9 @@ export default function Login() {
 
   const onClickSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
+    if (loading) return;
+
     try {
       setLoading(true);
       await signInWithEmailAndPassword(auth, email, password);
@@ -65,22 +70,24 @@ export default function Login() {
     }
   };
 
+  if (isLogin) {
+    alert('이미 로그인 상태입니다.');
+    navigate('/');
+    return null;
+  }
+
   return (
     <AuthTemplate>
       <form>
         <fieldset>
           <legend>회원 로그인 폼</legend>
           <div className="input-box">
-            <input type="email" autoComplete="off" placeholder="아이디" onChange={onChangeEmail} value={email} />
+            <input type="email" autoComplete="off" placeholder="아이디" onChange={onChangeEmail} value={email} disabled={loading} />
           </div>
           <div className="input-box">
-            <input type="password" placeholder="비밀번호" onChange={onChangePw} value={password} />
+            <input type="password" placeholder="비밀번호" onChange={onChangePw} value={password} disabled={loading} />
           </div>
-          <AuthButton
-            type="submit"
-            disabled={loading || !(email && password) || pwCheckError || emailError ? true : false}
-            onClick={onClickSubmit}
-          >
+          <AuthButton type="submit" disabled={loading || !email || !password || !!pwCheckError || !!emailError} onClick={onClickSubmit}>
             로그인
           </AuthButton>
           <Error>{emailError || pwCheckError || loginError}</Error>
