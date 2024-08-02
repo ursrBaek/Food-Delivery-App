@@ -2,7 +2,9 @@ import styled from 'styled-components';
 import spicyImage from '../../assets/images/spicyImage.png';
 import hotImage from '../../assets/images/hotImage.png';
 import coolImage from '../../assets/images/coolImage.png';
+import orangePaper from '../../assets/images/orangePaper.jpg';
 export const MainBox = styled.main`
+  padding-top: 15px;
   width: 100%;
   flex: 1;
   display: flex;
@@ -67,7 +69,9 @@ export const AddSection = styled.section`
   padding: 20px;
   text-align: center;
   border-radius: 7px;
-  background-color: #fb2728;
+  background-image: url(${orangePaper});
+  background-size: cover;
+  /* background-color: #fb2728; */
   color: #ffffff;
   font-size: 19px;
   font-family: 'hanna';
@@ -77,7 +81,11 @@ export const CategoryList = styled.ul`
   display: flex;
   flex-flow: row wrap;
   padding: 3% 2.5%;
+  margin: 4% 2.5%;
+  border-radius: 7px;
   justify-content: space-between;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px -3px rgb(0 0 0 / 30%);
 
   li {
     width: 20%;
@@ -88,11 +96,12 @@ export const CategoryList = styled.ul`
       align-items: center;
       justify-content: center;
       padding-bottom: 10px;
-      font-size: 16px;
+      font-size: 14px;
+      color: #333;
       img {
         width: 78%;
         background-color: #fff3e0;
-        border-radius: 50%;
+        border-radius: 30%;
         padding: 3px;
         transition: all ease-out 0.3s;
         margin-bottom: 3px;

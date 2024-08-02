@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background-color: #fff;
+  background-color: #f2f2f2;
   position: relative;
   margin: 0 auto;
   min-width: 280px;
@@ -36,11 +36,9 @@ export const StyledPrevButton = styled.button`
 
 export const StyledHeader = styled.header`
   top: 0;
-  padding: 15px 0;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: rgb(192, 192, 192);
-  background-color: #fff;
+  padding: 16px 0 13px 0;
+  background-color: #eb9111;
+  position: relative;
 
   h1 {
     margin: 0 auto;
@@ -51,9 +49,35 @@ export const StyledHeader = styled.header`
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    color: #d15c03;
+    /* color: #d15c03; */
+    color: #fff;
     opacity: 1;
     transition: all 0.1s ease-in-out;
+  }
+
+  div {
+    z-index: 900;
+    position: absolute;
+    bottom: -19px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-top: 1px solid #c76a12;
+    span {
+      flex: 1;
+      height: 19px;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      box-shadow: 0 3px 5px -3px rgb(0 0 0 / 30%);
+    }
+
+    span:nth-child(odd) {
+      background-color: #ec3b00;
+    }
+
+    span:nth-child(even) {
+      background-color: #ffd900;
+    }
   }
 `;
 
@@ -72,8 +96,9 @@ export const MenuWrapper = styled.div`
         width: 100%;
         .icon {
           width: 100%;
-          color: #b19986;
-          font-size: 30px;
+          /* color: #b19986; */
+          color: #a6a6a6;
+          font-size: 25px;
           line-height: 40px;
           vertical-align: bottom;
 
@@ -83,7 +108,8 @@ export const MenuWrapper = styled.div`
         }
         span {
           font-family: 'jua';
-          color: #b19986;
+          /* color: #b19986; */
+          color: #a6a6a6;
           font-size: 14px;
         }
         &:hover {

@@ -156,6 +156,7 @@ function SignUp() {
           {(emailError || pwCheckError || nicknameError || mismatchError || signUpError) && (
             <Error>{emailError || pwCheckError || nicknameError || mismatchError || signUpError}</Error>
           )}
+          {!signUpSuccess && signupLoading && <Success>회원가입 처리중...</Success>}
           {signUpSuccess && <Success>회원가입 완료! 로그인 화면으로 이동합니다.</Success>}
 
           <AuthButton

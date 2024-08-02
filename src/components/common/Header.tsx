@@ -9,6 +9,18 @@ function Header({ children }: Props) {
   return (
     <StyledHeader>
       <h1>{children}</h1>
+      <div>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </StyledHeader>
   );
 }
