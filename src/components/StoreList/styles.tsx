@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 export const StyledContainer = styled.ul`
-  font-family: 'yeonsung';
+  font-family: 'jua';
   display: flex;
   flex-flow: column;
   flex-grow: 1;
   overflow: auto;
   padding-top: 15px;
   li a {
+    color: #323232;
     display: flex;
     padding: 15px 15px;
     border-bottom: 1px solid rgb(192, 192, 192);
@@ -28,7 +29,7 @@ export const StyledContainer = styled.ul`
         }
       }
       .store-name {
-        font-weight: 900;
+        font-size: 19px;
       }
     }
     transition: all ease-out 0.25s;

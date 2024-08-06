@@ -128,3 +128,14 @@ export const GrayWrapper = styled.div`
   overflow-y: auto;
   background-color: #eee;
 `;
+
+interface IsError {
+  error?: boolean;
+}
+
+export const Message = styled.p<IsError>`
+  font-size: 25px;
+  text-align: center;
+  padding: 100px 0;
+  color: ${(props: IsError) => (props.error ? 'red' : '#333')};
+`;
