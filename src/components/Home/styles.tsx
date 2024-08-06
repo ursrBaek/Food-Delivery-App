@@ -11,6 +11,7 @@ export const MainBox = styled.main`
   flex-flow: column nowrap;
   align-self: flex-start;
   overflow: auto;
+  background-color: #f2f2f2;
 `;
 
 interface SectionProps {

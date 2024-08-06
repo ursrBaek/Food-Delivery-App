@@ -6,6 +6,7 @@ export const StyledContainer = styled.ul`
   flex-flow: column;
   flex-grow: 1;
   overflow: auto;
+  padding-top: 15px;
   li a {
     display: flex;
     padding: 15px 15px;
@@ -17,6 +18,7 @@ export const StyledContainer = styled.ul`
       object-fit: cover;
       border-radius: 15px;
       background-color: #fff;
+      border: 1px solid #e7e7e7;
     }
     .store-description {
       p {
