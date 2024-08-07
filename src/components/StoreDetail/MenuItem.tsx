@@ -1,18 +1,20 @@
 import React from 'react';
+import { IMenuItem } from 'types/responseTypes';
 
-function MenuItem() {
+interface Props {
+  menu: IMenuItem;
+}
+
+function MenuItem({ menu }: Props) {
   return (
-    <label htmlFor="감자통모짜핫도그">
+    <label htmlFor={menu.foodName}>
       <div className="menu-item">
-        <input type="checkbox" readOnly />
+        <input type="checkbox" readOnly id={menu.foodName} />
         <div>
-          <p className="menu-name">감자통모짜핫도그</p>
-          <p className="menu-price">5,000원</p>
+          <p className="menu-name">{menu.foodName}</p>
+          <p className="menu-price">{menu.foodPrice.toLocaleString()}원</p>
         </div>
-        <img
-          src={require(`../../assets/images/menuImages/명랑핫도그-감자통모짜핫도그.jpg`)}
-          alt="감자통모짜핫도그"
-        />
+        <img src={require(`../../assets/images/menuImages/${menu.foodImage}`)} alt={menu.foodImage} />
       </div>
     </label>
   );

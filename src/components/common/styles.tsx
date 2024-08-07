@@ -21,7 +21,6 @@ export const StyledPrevButton = styled.button`
   width: 47px;
   color: #333;
   border: none;
-  background-color: inherit;
 
   &.absolutePosition {
     position: absolute;
@@ -30,7 +29,11 @@ export const StyledPrevButton = styled.button`
   }
 
   &:hover {
-    color: #d15c03;
+    color: #ffffff;
+  }
+
+  &.whiteBg:hover {
+    color: #ff6e00;
   }
 `;
 

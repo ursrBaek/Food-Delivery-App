@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import MenuList from './MenuList';
 import ReviewList from './ReviewList';
 import { StyledTab } from './styles';
+import { StoreDetailInfo } from 'types/responseTypes';
 
-function StoreDetailMain() {
+interface Props {
+  storeDetailInfo: StoreDetailInfo;
+}
+
+function StoreDetailMain({ storeDetailInfo }: Props) {
   const [selectedTab, setSelectedTab] = useState('menu');
 
   return (
@@ -16,7 +21,7 @@ function StoreDetailMain() {
           리뷰
         </button>
       </StyledTab>
-      {selectedTab === 'menu' ? <MenuList /> : <ReviewList />}
+      {selectedTab === 'menu' ? <MenuList storeDetailInfo={storeDetailInfo} /> : <ReviewList />}
     </>
   );
 }
