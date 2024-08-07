@@ -5,14 +5,13 @@ import { AuthButton, Error } from 'components/AuthTemplate/styles';
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
-import { useIsLogin } from 'store';
+import { useUserNickname } from 'store';
 
 const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const pwReg = /^[a-zA-Z0-9]{6,15}$/;
 
 export default function Login() {
   const navigate = useNavigate();
-  const isLogin = useIsLogin();
 
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
@@ -55,6 +54,7 @@ export default function Login() {
     try {
       setLoading(true);
       await signInWithEmailAndPassword(auth, email, password);
+
       navigate('/');
       setLoading(false);
     } catch (error) {
@@ -70,7 +70,9 @@ export default function Login() {
     }
   };
 
-  if (isLogin) {
+  const userNickname = useUserNickname();
+
+  if (userNickname && !loading) {
     alert('이미 로그인 상태입니다.');
     navigate('/');
     return null;

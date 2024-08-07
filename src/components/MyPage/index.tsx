@@ -3,8 +3,22 @@ import PrevButton from 'components/common/PrevButton';
 import React from 'react';
 import UserInfo from './UserInfo';
 import { MyPageContainer } from './styles';
+import { useUserActions } from 'store';
+import { auth } from '../../firebase';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 export default function MyPage() {
+  const { setInitUser } = useUserActions();
+  const navigate = useNavigate();
+
+  const logOut = () => {
+    if (window.confirm('로그아웃 하시겠습니까?')) {
+      setInitUser();
+      signOut(auth);
+      navigate('/login');
+    }
+  };
   return (
     <>
       <Header>마이페이지</Header>
@@ -29,7 +43,7 @@ export default function MyPage() {
             <span>🏆</span> 천생연분: 월 20회 이상 주문
           </p>
         </div>
-        <button className="logout">
+        <button className="logout" onClick={logOut}>
           <i className="fa-solid fa-arrow-right-from-bracket"></i> 로그아웃
         </button>
       </MyPageContainer>
