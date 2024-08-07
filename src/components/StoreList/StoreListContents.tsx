@@ -1,27 +1,23 @@
 import React from 'react';
-import { StyledContainer } from './styles';
 import StoreItem from './StoreItem';
-import { useStoreListOfCategoryQuery } from './hooks/storeListQuery';
+import { StoreInfo } from 'types/responseTypes';
 import { useParams } from 'react-router-dom';
 import { Message } from 'components/common/styles';
 
-function StoreListContents() {
+interface Props {
+  storeLists: StoreInfo[];
+}
+
+function StoreListContents({ storeLists }: Props) {
   const { category } = useParams();
 
-  const { isLoading, data: storeLists, isError, error } = useStoreListOfCategoryQuery(category);
-
   return (
-    <StyledContainer>
-      {isLoading && <Message>{'로딩중...'}</Message>}
-      {isError && (
-        <Message error={isError}>
-          {'문제가 발생했습니다.'}
-          <br />
-          {error?.message}
-        </Message>
-      )}
-      {storeLists && storeLists.map((store) => <StoreItem key={store.id} store={store} />)}
-    </StyledContainer>
+    <>
+      {storeLists.map((store) => (
+        <StoreItem key={store.id} store={store} />
+      ))}
+      {!category && storeLists.length === 0 && <Message>{'찜하기 한 가게가 없습니다.'}</Message>}
+    </>
   );
 }
 

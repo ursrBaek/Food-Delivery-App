@@ -19,9 +19,9 @@ function StoreItem({ store }: Props) {
           </p>
           <p>
             <i className="far fa-clock"></i>
-            {store.deliveryTime}분 / 최소주문 {store.minPrice}원
+            {store.deliveryTime}분 / 최소주문 {store.minPrice.toLocaleString()}원
           </p>
-          <p>배달팁 {store.deliveryTip}원</p>
+          <p>배달팁 {store.deliveryTip.toLocaleString()}원</p>
         </div>
       </Link>
     </li>

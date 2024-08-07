@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledContainer = styled.ul`
-  font-family: 'jua';
+  font-family: 'yeonsung';
   display: flex;
   flex-flow: column;
   flex-grow: 1;
@@ -29,6 +29,8 @@ export const StyledContainer = styled.ul`
         }
       }
       .store-name {
+        letter-spacing: 1px;
+        font-weight: 600;
         font-size: 19px;
       }
     }
