@@ -196,3 +196,16 @@ export const ReviewItemBox = styled.div`
     line-height: 1.4;
   }
 `;
+
+export const Loading = styled.p`
+  text-align: center;
+  font-size: 20px;
+  padding: 20px 0;
+`;
+
+export const Empty = styled.p`
+  text-align: center;
+  font-size: 20px;
+  color: #444;
+  padding: 20px 0;
+`;

@@ -21,7 +21,7 @@ function StoreDetailMain({ storeDetailInfo }: Props) {
           리뷰
         </button>
       </StyledTab>
-      {selectedTab === 'menu' ? <MenuList storeDetailInfo={storeDetailInfo} /> : <ReviewList />}
+      {selectedTab === 'menu' ? <MenuList storeDetailInfo={storeDetailInfo} /> : <ReviewList storeDetailInfo={storeDetailInfo} />}
     </>
   );
 }

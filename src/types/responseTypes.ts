@@ -20,3 +20,10 @@ export interface StoreDetailInfo extends StoreInfo {
   tel: string;
   menu: Array<IMenuItem>;
 }
+
+export interface IReview {
+  star: number;
+  content: string;
+  date: number;
+  nickname: string;
+}

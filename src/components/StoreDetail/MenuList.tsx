@@ -11,7 +11,7 @@ function MenuList({ storeDetailInfo }: Props) {
     <>
       <MenuBox>
         {storeDetailInfo.menu.map((menu) => (
-          <MenuItem menu={menu} />
+          <MenuItem menu={menu} key={menu.foodName} />
         ))}
       </MenuBox>
       <OrderButton>

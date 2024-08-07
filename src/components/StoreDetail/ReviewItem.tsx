@@ -1,17 +1,24 @@
 import React from 'react';
 import { ReviewItemBox } from './styles';
+import { IReview } from 'types/responseTypes';
 
-function ReviewItem() {
+interface Props {
+  reviewInfo: IReview;
+}
+
+function ReviewItem({ reviewInfo }: Props) {
+  const { star, content, date, nickname } = reviewInfo;
+
   return (
     <ReviewItemBox>
-      <p className="review-nick">밥사랑</p>
+      <p className="review-nick">{nickname}</p>
       <p className="review-date">
         <span>
-          <i className="fas fa-star"></i> 4.5
+          <i className="fas fa-star"></i> {star}
         </span>
-        2023년 12월 31일 11:25:39
+        {date}
       </p>
-      <p className="review-txt">정말 맛있습니다. 또 먹고싶네요. 많이파세요.</p>
+      <p className="review-txt">{content}</p>
     </ReviewItemBox>
   );
 }
