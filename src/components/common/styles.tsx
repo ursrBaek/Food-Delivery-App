@@ -21,7 +21,6 @@ export const StyledPrevButton = styled.button`
   width: 47px;
   color: #333;
   border: none;
-  background-color: inherit;
 
   &.absolutePosition {
     position: absolute;
@@ -30,7 +29,11 @@ export const StyledPrevButton = styled.button`
   }
 
   &:hover {
-    color: #d15c03;
+    color: #ffffff;
+  }
+
+  &.whiteBg:hover {
+    color: #ff6e00;
   }
 `;
 
@@ -130,12 +133,12 @@ export const GrayWrapper = styled.div`
 `;
 
 interface IsError {
-  error?: boolean;
+  $error?: string;
 }
 
 export const Message = styled.p<IsError>`
   font-size: 25px;
   text-align: center;
   padding: 100px 0;
-  color: ${(props: IsError) => (props.error ? 'red' : '#333')};
+  color: ${(props: IsError) => (props.$error ? 'red' : '#333')};
 `;

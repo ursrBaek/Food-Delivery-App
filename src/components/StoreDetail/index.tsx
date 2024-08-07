@@ -5,16 +5,41 @@ import StoreOrderInfo from './StoreOrderInfo';
 import { MainBox } from './styles';
 import StoreDetailMain from './StoreDetailMain';
 import PrevButton from 'components/common/PrevButton';
+import { useParams } from 'react-router-dom';
+import useStoreDetailQuery from './hooks/useStoreDetailQuery';
+import { Message } from 'components/common/styles';
 
 export default function StoreDetail() {
+  const { storeId } = useParams();
+
+  if (!storeId) {
+    throw new Error('매장 id 추출 중 오류발생.');
+  }
+
+  const { isLoading, data: storeDetailInfo, isError, error } = useStoreDetailQuery(storeId);
+
   return (
     <>
-      <Header>경성꽈배기</Header>
+      <Header>{isError ? '???' : storeDetailInfo?.storeName || '...'}</Header>
       <PrevButton isAbsolutePosition={true} />
+
       <MainBox>
-        <StoreInfo />
-        <StoreOrderInfo />
-        <StoreDetailMain />
+        {isLoading || isError ? (
+          <Message $error={isError ? 'true' : ''}>
+            {isLoading && 'Loading...'}
+            {isError && 'Error가 발생했습니다.'}
+            <br />
+            {error && error.message}
+          </Message>
+        ) : (
+          storeDetailInfo && (
+            <>
+              <StoreInfo storeDetailInfo={storeDetailInfo} />
+              <StoreOrderInfo storeDetailInfo={storeDetailInfo} />
+              <StoreDetailMain storeDetailInfo={storeDetailInfo} />
+            </>
+          )
+        )}
       </MainBox>
     </>
   );

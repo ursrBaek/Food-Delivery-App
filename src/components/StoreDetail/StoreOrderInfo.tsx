@@ -1,20 +1,25 @@
 import React from 'react';
 import { StyledStoreOrderInfoBox } from './styles';
+import { StoreDetailInfo } from 'types/responseTypes';
 
-function StoreOrderInfo() {
+interface Props {
+  storeDetailInfo: StoreDetailInfo;
+}
+
+function StoreOrderInfo({ storeDetailInfo }: Props) {
   return (
     <StyledStoreOrderInfoBox>
       <p>
         <span>최소 주문금액</span>
-        15,000 원
+        {storeDetailInfo.minPrice.toLocaleString()} 원
       </p>
       <p>
         <span>배달시간</span>
-        35분
+        {storeDetailInfo.deliveryTime}분
       </p>
       <p>
         <span>배달팁</span>
-        3,000원
+        {storeDetailInfo.deliveryTip}원
       </p>
     </StyledStoreOrderInfoBox>
   );
