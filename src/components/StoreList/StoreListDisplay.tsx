@@ -16,7 +16,7 @@ function StoreListDisplay({ isLoading, isError, error, storeLists }: Props) {
     <StyledContainer>
       {isLoading && <Message>{'로딩중...'}</Message>}
       {isError && (
-        <Message error={isError}>
+        <Message $error={isError.toString()}>
           {'문제가 발생했습니다.'}
           <br />
           {error?.message}

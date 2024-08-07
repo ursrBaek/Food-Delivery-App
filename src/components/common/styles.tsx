@@ -133,12 +133,12 @@ export const GrayWrapper = styled.div`
 `;
 
 interface IsError {
-  error?: boolean;
+  $error?: string;
 }
 
 export const Message = styled.p<IsError>`
   font-size: 25px;
   text-align: center;
   padding: 100px 0;
-  color: ${(props: IsError) => (props.error ? 'red' : '#333')};
+  color: ${(props: IsError) => (props.$error ? 'red' : '#333')};
 `;

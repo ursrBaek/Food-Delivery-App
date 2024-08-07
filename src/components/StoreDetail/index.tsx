@@ -25,7 +25,7 @@ export default function StoreDetail() {
 
       <MainBox>
         {isLoading || isError ? (
-          <Message error={isError}>
+          <Message $error={isError ? 'true' : ''}>
             {isLoading && 'Loading...'}
             {isError && 'Error가 발생했습니다.'}
             <br />
