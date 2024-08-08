@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyledStoreOrderInfoBox } from './styles';
 import { StoreDetailInfo } from 'types/responseTypes';
 import { useOrderListAction } from 'store';
@@ -10,8 +10,11 @@ interface Props {
 function StoreOrderInfo({ storeDetailInfo }: Props) {
   const { setStoreId, setStoreName } = useOrderListAction();
 
-  setStoreId(storeDetailInfo.id.toString());
-  setStoreName(storeDetailInfo.storeName);
+  useEffect(() => {
+    const { id, storeName } = storeDetailInfo;
+    setStoreId(id.toString());
+    setStoreName(storeName);
+  }, [setStoreId, setStoreName, storeDetailInfo]);
 
   return (
     <StyledStoreOrderInfoBox>

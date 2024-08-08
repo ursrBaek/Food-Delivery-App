@@ -58,7 +58,7 @@ function Banner() {
     };
   }, [idx]);
   return (
-    <StyledSection idx={idx}>
+    <StyledSection $idx={idx}>
       <h2 className="a11y-hidden">광고 배너</h2>
       <div className="carouselWrap">
         <div className={`bannerItemContainer ${onAnimate ? 'onAnimate' : ''}`}>
