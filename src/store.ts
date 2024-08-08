@@ -97,6 +97,7 @@ export const useOrderInfo = () =>
     storeId: state.storeId,
     orderList: state.orderList,
     totalAmount: state.totalAmount,
+    orderDate: state.orderDate,
   }));
 
 export const useOrderListAction = () => useOrderStore((state) => state.actions);
