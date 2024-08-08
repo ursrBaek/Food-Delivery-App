@@ -31,3 +31,21 @@ export interface IReview {
   date: number;
   nickname: string;
 }
+
+export interface IUserOrderListItemRes {
+  storeName: string;
+  totalAmount: number;
+  orderList: (IOrderItem | null)[];
+  storeId: string;
+  orderDate: number;
+  review: boolean;
+}
+
+export interface IUserOrderListItemReq {
+  storeName: string;
+  totalAmount: number;
+  orderList: (IOrderItem | null)[];
+  storeId: string;
+  orderDate: object;
+  review: boolean;
+}

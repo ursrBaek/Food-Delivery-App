@@ -8,7 +8,7 @@ import TotalOrderAmount from './TotalOrderAmount';
 import { useOrderInfo } from 'store';
 
 function OrderInfo() {
-  const { storeName, storeId, orderList, totalAmount } = useOrderInfo();
+  const { storeName, orderList, totalAmount } = useOrderInfo();
 
   if (!orderList || totalAmount === 0) return <Empty />;
   return (
@@ -17,7 +17,7 @@ function OrderInfo() {
       <ul>{orderList.map((menu, idx) => menu && <OrderItem menuInfo={menu} key={menu?.foodName} idx={idx} />)}</ul>
       <TotalOrderAmount totalAmount={totalAmount} />
       <FoodMessage />
-      <OrderButton totalAmount={totalAmount} />
+      <OrderButton />
     </>
   );
 }
