@@ -1,10 +1,14 @@
 import React from 'react';
 import { StyledOrderStoreInfoBox } from './styles';
 
-function OrderStoreInfo() {
+interface Props {
+  storeName: string;
+}
+
+function OrderStoreInfo({ storeName }: Props) {
   return (
     <StyledOrderStoreInfoBox>
-      <div className="store-name">경성꽈배기 성수카페거리점</div>
+      <div className="store-name">{storeName}</div>
       <div className="delivery-msg">
         <p>배달</p>
         <p>문 앞까지 음식이 배달됩니다.</p>

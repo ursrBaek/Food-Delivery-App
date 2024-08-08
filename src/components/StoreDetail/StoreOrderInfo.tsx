@@ -1,12 +1,18 @@
 import React from 'react';
 import { StyledStoreOrderInfoBox } from './styles';
 import { StoreDetailInfo } from 'types/responseTypes';
+import { useOrderListAction } from 'store';
 
 interface Props {
   storeDetailInfo: StoreDetailInfo;
 }
 
 function StoreOrderInfo({ storeDetailInfo }: Props) {
+  const { setStoreId, setStoreName } = useOrderListAction();
+
+  setStoreId(storeDetailInfo.id.toString());
+  setStoreName(storeDetailInfo.storeName);
+
   return (
     <StyledStoreOrderInfoBox>
       <p>
