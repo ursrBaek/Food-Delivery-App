@@ -3,6 +3,7 @@ import { auth } from './firebase';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
+import { IOrderItem } from 'types/responseTypes';
 
 // user 정보 스토어
 
@@ -50,29 +51,40 @@ const useOrderStore = create<IOrderStore>()(
         addMenu: (idx, menu) => {
           return set((state) => {
             state.orderList[idx] = menu;
-            state.totalAmount = state.orderList.reduce((curr, menu, i) => {
-              if (menu) {
-                return curr + menu.foodPrice * menu.orderCount;
-              }
-              return curr;
-            }, 0);
+            state.totalAmount = calculateTotalAmount(state.orderList as IOrderItem[]);
           });
         },
         deleteMenu: (idx) => {
           return set((state) => {
             state.orderList[idx] = null;
-            state.totalAmount = state.orderList.reduce((curr, menu, i) => {
-              if (menu) {
-                return curr + menu.foodPrice * menu.orderCount;
-              }
-              return curr;
-            }, 0);
+            state.totalAmount = calculateTotalAmount(state.orderList as IOrderItem[]);
           });
         },
+        increaseMenuCount: (idx) =>
+          set((state) => {
+            const orderItem = state.orderList[idx] as IOrderItem;
+            orderItem.orderCount += 1;
+            state.totalAmount = calculateTotalAmount(state.orderList as IOrderItem[]);
+          }),
+        decreaseMenuCount: (idx) =>
+          set((state) => {
+            const orderItem = state.orderList[idx] as IOrderItem;
+            orderItem.orderCount -= 1;
+            state.totalAmount = calculateTotalAmount(state.orderList as IOrderItem[]);
+          }),
       },
     })),
   ),
 );
+
+function calculateTotalAmount(orderList: IOrderItem[]) {
+  return orderList.reduce((curr, menu) => {
+    if (menu) {
+      return curr + menu.foodPrice * menu.orderCount;
+    }
+    return curr;
+  }, 0);
+}
 
 export const useStoreName = () => useOrderStore((state) => state.storeName);
 export const useStoreId = () => useOrderStore((state) => state.storeId);

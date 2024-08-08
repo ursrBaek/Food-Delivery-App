@@ -10,7 +10,7 @@ import { useOrderInfo } from 'store';
 function OrderInfo() {
   const { storeName, storeId, orderList, totalAmount } = useOrderInfo();
 
-  if (!orderList || orderList.length === 0) return <Empty />;
+  if (!orderList || totalAmount === 0) return <Empty />;
   return (
     <>
       <OrderStoreInfo storeName={storeName} />
