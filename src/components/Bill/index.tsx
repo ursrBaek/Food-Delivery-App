@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import OrderedItem from './OrderedItem';
 import { StyledBill } from './styles';
 import Header from 'components/common/Header';
 import BottomMenu from 'components/common/BottomMenu';
 import { useOrderInfo } from 'store';
+import { useNavigate } from 'react-router-dom';
 
 function Bill() {
   const { storeName, orderList, totalAmount, orderDate } = useOrderInfo();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!orderDate) {
+      alert('잘못된 접근입니다.');
+      navigate('/');
+    }
+  }, [orderDate, navigate]);
 
   return (
     <>
