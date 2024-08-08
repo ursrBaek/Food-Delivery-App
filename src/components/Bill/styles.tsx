@@ -48,6 +48,11 @@ export const StyledBill = styled.div`
       .menu-name {
         text-align: left;
         font-size: 23px;
+
+        span {
+          font-size: 19px;
+          color: #444;
+        }
       }
     }
   }
