@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyledOrderButton } from './styles';
 
-function OrderButton() {
+interface Props {
+  totalAmount: number;
+}
+
+function OrderButton({ totalAmount }: Props) {
   return (
     <StyledOrderButton>
-      <span className="list-count">10</span>
-      <span className="order-price">123,400원 </span> 배달 주문하기
+      <i className="fa-solid fa-utensils"></i> <span className="order-price">{totalAmount.toLocaleString()} 원 </span> 배달 주문하기
     </StyledOrderButton>
   );
 }

@@ -79,5 +79,12 @@ export const useStoreId = () => useOrderStore((state) => state.storeId);
 export const useTotalAmount = () => useOrderStore((state) => state.totalAmount);
 export const useOrderList = () => useOrderStore((state) => state.orderList);
 export const useOrderDate = () => useOrderStore((state) => state.orderDate);
+export const useOrderInfo = () =>
+  useOrderStore((state) => ({
+    storeName: state.storeName,
+    storeId: state.storeId,
+    orderList: state.orderList,
+    totalAmount: state.totalAmount,
+  }));
 
 export const useOrderListAction = () => useOrderStore((state) => state.actions);

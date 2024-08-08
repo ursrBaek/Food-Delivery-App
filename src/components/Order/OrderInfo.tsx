@@ -5,20 +5,19 @@ import OrderButton from './OrderButton';
 import OrderStoreInfo from './OrderStoreInfo';
 import FoodMessage from './FoodMessage';
 import TotalOrderAmount from './TotalOrderAmount';
+import { useOrderInfo } from 'store';
 
 function OrderInfo() {
-  // return <Empty />;
+  const { storeName, storeId, orderList, totalAmount } = useOrderInfo();
+
+  if (!orderList || orderList.length === 0) return <Empty />;
   return (
     <>
-      <OrderStoreInfo />
-      <ul>
-        <OrderItem />
-        <OrderItem />
-        <OrderItem />
-      </ul>
-      <TotalOrderAmount />
+      <OrderStoreInfo storeName={storeName} />
+      <ul>{orderList.map((menu, idx) => menu && <OrderItem menuInfo={menu} key={menu?.foodName} idx={idx} />)}</ul>
+      <TotalOrderAmount totalAmount={totalAmount} />
       <FoodMessage />
-      <OrderButton />
+      <OrderButton totalAmount={totalAmount} />
     </>
   );
 }

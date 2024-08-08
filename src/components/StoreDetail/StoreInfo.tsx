@@ -15,12 +15,10 @@ function StoreInfo({ storeDetailInfo }: Props) {
 
   const { isLoading, isError, data: likesData } = useStoreLikeQuery(userId, storeDetailInfo.id.toString());
 
-  const { storeName, storeStar, reviewCount, id } = storeDetailInfo;
-
   const likeSettingInfo: ILikeSettingInfo = {
     userId,
     currentLikesState: Boolean(likesData?.currentLikesState),
-    storeId: id,
+    storeId: storeDetailInfo.id,
   };
 
   const { mutate } = useSetLikeMutation();

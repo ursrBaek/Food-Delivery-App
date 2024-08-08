@@ -4,6 +4,7 @@ import deleteIcon from '../../assets/images/x-icon.png';
 
 export const StyledOrderStoreInfoBox = styled.div`
   margin: 7px 0;
+  padding-top: 10px;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
   text-indent: 15px;
@@ -129,21 +130,17 @@ export const StyledOrderButton = styled.button`
   span {
     padding: 3px 0;
   }
-  .list-count {
-    margin-right: 10px;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: #fff;
-    color: #d15c03;
-    line-height: 25px;
-  }
   .order-price {
     margin-right: 10px;
   }
 
   &:hover {
     background-color: #f07415;
+  }
+
+  i {
+    margin-right: 10px;
+    margin-bottom: 3px;
   }
 `;
 
