@@ -159,3 +159,24 @@ export const EmptyContainer = styled.div`
     color: #545454;
   }
 `;
+
+export const MessageComp = styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(75, 75, 75, 0.8);
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  span {
+    font-size: 70px;
+  }
+  p {
+    margin-top: 20px;
+    font-size: 26px;
+  }
+`;

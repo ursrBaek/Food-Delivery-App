@@ -15,7 +15,7 @@ export const MainBox = styled.main`
 `;
 
 interface SectionProps {
-  idx: number;
+  $idx: number;
 }
 
 export const StyledSection = styled.section<SectionProps>`
@@ -30,7 +30,7 @@ export const StyledSection = styled.section<SectionProps>`
     .bannerItemContainer {
       width: auto;
       display: flex;
-      transform: translateX(${(props: SectionProps) => `calc(${(props.idx + 1) * 100}% * -1)`});
+      transform: translateX(${(props: SectionProps) => `calc(${(props.$idx + 1) * 100}% * -1)`});
       img {
         display: inline-block;
         width: 100%;

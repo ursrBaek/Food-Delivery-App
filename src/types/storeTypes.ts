@@ -24,5 +24,7 @@ export interface IOrderStore {
     setStoreId: (paramsStoreId: string) => void;
     addMenu: (idx: number, menu: IOrderItem) => void;
     deleteMenu: (idx: number) => void;
+    increaseMenuCount: (idx: number) => void;
+    decreaseMenuCount: (idx: number) => void;
   };
 }
