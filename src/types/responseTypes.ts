@@ -16,6 +16,10 @@ export interface IMenuItem {
   foodImage: string;
 }
 
+export interface IOrderItem extends IMenuItem {
+  orderCount: number;
+}
+
 export interface StoreDetailInfo extends StoreInfo {
   tel: string;
   menu: Array<IMenuItem>;

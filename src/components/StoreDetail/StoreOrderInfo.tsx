@@ -19,7 +19,7 @@ function StoreOrderInfo({ storeDetailInfo }: Props) {
       </p>
       <p>
         <span>배달팁</span>
-        {storeDetailInfo.deliveryTip}원
+        {storeDetailInfo.deliveryTip.toLocaleString()}원
       </p>
     </StyledStoreOrderInfoBox>
   );
