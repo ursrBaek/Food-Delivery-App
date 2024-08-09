@@ -3,7 +3,7 @@ import { auth } from './firebase';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
-import { IOrderItem } from 'types/responseTypes';
+import { IOrderItem, IUserOrderListItemRes } from 'types/responseTypes';
 
 // user 정보 스토어
 
@@ -41,6 +41,8 @@ const useOrderStore = create<IOrderStore>()(
       orderDate: '',
       actions: {
         // 액션함수 하나로 묶기!!!!!!!!!!!
+        setOrderInit: () =>
+          set({ storeName: '', storeId: '', orderList: [], deliveryTip: 0, storeImg: '', minPrice: 0, totalAmount: 0, orderDate: '' }),
         setOrderDate: (date: string) => set((state) => ({ orderDate: date })),
         setStoreName: (storeName: string) => set((state) => ({ storeName })),
         setDeliveryTip: (deliveryTip: number) => set((state) => ({ deliveryTip })),
@@ -55,6 +57,17 @@ const useOrderStore = create<IOrderStore>()(
             }
             return state;
           }),
+        setOrderSameMenu: (orderInfo: IUserOrderListItemRes) =>
+          set((state) => ({
+            storeName: orderInfo.storeName,
+            storeId: orderInfo.storeId,
+            orderList: orderInfo.orderList,
+            deliveryTip: orderInfo.deliveryTip,
+            storeImg: orderInfo.storeImg,
+            minPrice: orderInfo.minPrice,
+            totalAmount: orderInfo.totalAmount,
+            orderDate: '',
+          })),
         addMenu: (idx, menu) => {
           return set((state) => {
             state.orderList[idx] = menu;

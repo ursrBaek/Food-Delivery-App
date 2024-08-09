@@ -32,6 +32,7 @@ function OrderButton() {
         storeImg,
         orderList,
         storeId,
+        minPrice,
         orderDate: serverTimestamp(),
         review: false,
       },

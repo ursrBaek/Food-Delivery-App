@@ -2,12 +2,17 @@ import React from 'react';
 import { StyledListItem } from './styles';
 import { IUserOrderListItemRes } from 'types/responseTypes';
 import getCurrentDate from 'utils/getCurrentDate';
+import { useOrderListAction } from 'store';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   orderInfo: IUserOrderListItemRes;
 }
 
 export default function OrderHistoryItem({ orderInfo }: Props) {
+  const navigate = useNavigate();
+  const { setOrderSameMenu } = useOrderListAction();
+
   const menuList = [];
   for (const key in orderInfo.orderList) {
     menuList.push(orderInfo.orderList[key]);
@@ -15,6 +20,12 @@ export default function OrderHistoryItem({ orderInfo }: Props) {
   const menuCount = menuList.reduce((cal, curr, i) => {
     return cal + (curr?.orderCount || 1);
   }, 0);
+
+  const clickAddSameMenu = () => {
+    setOrderSameMenu(orderInfo);
+    navigate(`/order/${orderInfo.storeId}`);
+  };
+
   return (
     <StyledListItem>
       <div className="dateAndDetailBtn">
@@ -31,7 +42,9 @@ export default function OrderHistoryItem({ orderInfo }: Props) {
           <p className="orderPrice">총 결제금액: {orderInfo.totalAmount.toLocaleString()}원</p>
         </div>
       </div>
-      <button className="AddToOrderBtn">같은 메뉴 담기</button>
+      <button className="AddToOrderBtn" onClick={clickAddSameMenu}>
+        같은 메뉴 담기
+      </button>
       <button className={`reviewBtn ${orderInfo.review ? 'disabled' : ''}`} disabled={!orderInfo.review}>
         리뷰 쓰기 {orderInfo.review && '( 작성완료 )'}
       </button>
