@@ -8,14 +8,15 @@ interface Props {
 }
 
 function StoreOrderInfo({ storeDetailInfo }: Props) {
-  const { setStoreId, setStoreName, setDeliveryTip } = useOrderListAction();
-
+  const { setStoreId, setStoreName, setDeliveryTip, setStoreImg, setMinPrice } = useOrderListAction();
   useEffect(() => {
-    const { id, storeName, deliveryTip } = storeDetailInfo;
+    const { id, storeName, deliveryTip, storeImg, minPrice } = storeDetailInfo;
     setStoreId(id.toString());
     setStoreName(storeName);
     setDeliveryTip(deliveryTip);
-  }, [setStoreId, setStoreName, setDeliveryTip, storeDetailInfo]);
+    setStoreImg(storeImg);
+    setMinPrice(minPrice);
+  }, [setStoreId, setStoreName, setDeliveryTip, storeDetailInfo, setStoreImg, setMinPrice]);
 
   return (
     <StyledStoreOrderInfoBox>

@@ -35,12 +35,17 @@ const useOrderStore = create<IOrderStore>()(
       storeId: '',
       orderList: [],
       deliveryTip: 0,
+      storeImg: '',
+      minPrice: 0,
       totalAmount: 0,
       orderDate: '',
       actions: {
+        // 액션함수 하나로 묶기!!!!!!!!!!!
         setOrderDate: (date: string) => set((state) => ({ orderDate: date })),
         setStoreName: (storeName: string) => set((state) => ({ storeName })),
         setDeliveryTip: (deliveryTip: number) => set((state) => ({ deliveryTip })),
+        setStoreImg: (storeImg: string) => set((state) => ({ storeImg })),
+        setMinPrice: (minPrice: number) => set((state) => ({ minPrice })),
         setStoreId: (paramsStoreId) =>
           set((state) => {
             if (state.storeId && state.storeId !== paramsStoreId) {
@@ -101,6 +106,8 @@ export const useOrderInfo = () =>
   useOrderStore((state) => ({
     storeName: state.storeName,
     storeId: state.storeId,
+    storeImg: state.storeImg,
+    minPrice: state.minPrice,
     deliveryTip: state.deliveryTip,
     orderList: state.orderList,
     totalAmount: state.totalAmount,

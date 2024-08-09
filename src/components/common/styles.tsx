@@ -138,6 +138,9 @@ interface IsError {
 }
 
 export const Message = styled.p<IsError>`
+  width: 90%;
+  margin: 0 auto;
+  word-break: break-all;
   font-size: 25px;
   text-align: center;
   padding: 100px 0;

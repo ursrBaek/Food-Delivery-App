@@ -2,8 +2,6 @@ import React from 'react';
 import { MessageComp, StyledOrderButton } from './styles';
 import { useOrderInfo, useOrderListAction, useUserId } from 'store';
 import { useNavigate } from 'react-router-dom';
-import useStoreDetailQuery from 'components/StoreDetail/hooks/useStoreDetailQuery';
-import { StoreDetailInfo } from 'types/responseTypes';
 import { serverTimestamp } from 'firebase/database';
 import useOrderMutation, { IOrderInfo } from './hooks/useOrderMutation';
 import getCurrentDate from 'utils/getCurrentDate';
@@ -13,9 +11,7 @@ function OrderButton() {
 
   const userId = useUserId();
   const { setOrderDate } = useOrderListAction();
-  const { storeName, storeId, orderList, totalAmount, deliveryTip } = useOrderInfo();
-  const { data: storeDetailInfo } = useStoreDetailQuery(storeId);
-  const { minPrice } = storeDetailInfo as StoreDetailInfo;
+  const { storeName, storeId, orderList, totalAmount, deliveryTip, storeImg, minPrice } = useOrderInfo();
   const { mutateAsync, isPending, isError, error } = useOrderMutation();
 
   const order = async (orderInfo: IOrderInfo) => {
@@ -33,6 +29,7 @@ function OrderButton() {
         storeName,
         deliveryTip,
         totalAmount,
+        storeImg,
         orderList,
         storeId,
         orderDate: serverTimestamp(),
