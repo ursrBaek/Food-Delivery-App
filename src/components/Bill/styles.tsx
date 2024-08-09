@@ -57,9 +57,20 @@ export const StyledBill = styled.div`
     }
   }
 
+  .totalOrderInfo {
+    color: #444;
+    padding: 10px 50px 10px 35px;
+    font-size: 20px;
+    p {
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
   .totalOrderedPrice {
     font-family: 'hannaPro';
-    font-size: 25px;
+    font-size: 22px;
     padding: 10px 50px 30px 35px;
     display: flex;
     flex-wrap: wrap;

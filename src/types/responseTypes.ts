@@ -35,8 +35,11 @@ export interface IReview {
 export interface IUserOrderListItemRes {
   storeName: string;
   totalAmount: number;
+  deliveryTip: number;
+  minPrice: number;
   orderList: (IOrderItem | null)[];
   storeId: string;
+  storeImg: string;
   orderDate: number;
   review: boolean;
 }
@@ -44,6 +47,9 @@ export interface IUserOrderListItemRes {
 export interface IUserOrderListItemReq {
   storeName: string;
   totalAmount: number;
+  deliveryTip: number;
+  minPrice: number;
+  storeImg: string;
   orderList: (IOrderItem | null)[];
   storeId: string;
   orderDate: object;

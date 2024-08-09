@@ -7,7 +7,7 @@ import { useOrderInfo } from 'store';
 import { useNavigate } from 'react-router-dom';
 
 function Bill() {
-  const { storeName, orderList, totalAmount, orderDate } = useOrderInfo();
+  const { storeName, orderList, totalAmount, orderDate, deliveryTip } = useOrderInfo();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,6 +28,14 @@ function Bill() {
         </div>
         <h2 className="orders">주문 내역</h2>
         <ul>{orderList.map((menu, idx) => menu && <OrderedItem key={idx} menu={menu} />)}</ul>
+        <div className="totalOrderInfo">
+          <p>
+            <span>주문금액:</span> <span>{(totalAmount - deliveryTip).toLocaleString()} 원</span>
+          </p>
+          <p>
+            <span>배달팁:</span> <span>{deliveryTip.toLocaleString()} 원</span>
+          </p>
+        </div>
         <div className="totalOrderedPrice">
           <span className="priceTitle">총 결제금액</span>
           <span>{totalAmount.toLocaleString()} 원</span>

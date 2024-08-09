@@ -2,8 +2,6 @@ import React from 'react';
 import { MessageComp, StyledOrderButton } from './styles';
 import { useOrderInfo, useOrderListAction, useUserId } from 'store';
 import { useNavigate } from 'react-router-dom';
-import useStoreDetailQuery from 'components/StoreDetail/hooks/useStoreDetailQuery';
-import { StoreDetailInfo } from 'types/responseTypes';
 import { serverTimestamp } from 'firebase/database';
 import useOrderMutation, { IOrderInfo } from './hooks/useOrderMutation';
 import getCurrentDate from 'utils/getCurrentDate';
@@ -13,9 +11,7 @@ function OrderButton() {
 
   const userId = useUserId();
   const { setOrderDate } = useOrderListAction();
-  const { storeName, storeId, orderList, totalAmount } = useOrderInfo();
-  const { data: storeDetailInfo } = useStoreDetailQuery(storeId);
-  const { minPrice } = storeDetailInfo as StoreDetailInfo;
+  const { storeName, storeId, orderList, totalAmount, deliveryTip, storeImg, minPrice } = useOrderInfo();
   const { mutateAsync, isPending, isError, error } = useOrderMutation();
 
   const order = async (orderInfo: IOrderInfo) => {
@@ -31,20 +27,23 @@ function OrderButton() {
       userId,
       orderDetail: {
         storeName,
+        deliveryTip,
         totalAmount,
+        storeImg,
         orderList,
         storeId,
+        minPrice,
         orderDate: serverTimestamp(),
         review: false,
       },
     };
 
-    if (totalAmount >= minPrice) {
+    if (totalAmount - deliveryTip >= minPrice) {
       order(orderInfo).then(() => {
         navigate('/bill');
       });
     } else {
-      alert(`최소 주문금액은 ${minPrice.toLocaleString()}원 입니다.`);
+      alert(`최소 주문금액(배달팁 제외)은 ${minPrice.toLocaleString()}원 입니다.`);
     }
   };
 
