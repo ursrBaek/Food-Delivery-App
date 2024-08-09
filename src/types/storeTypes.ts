@@ -15,6 +15,7 @@ export interface IUserStore {
 export interface IOrderStore {
   storeName: string;
   storeId: string;
+  deliveryTip: number;
   orderList: Array<IOrderItem | null>;
   totalAmount: number;
   orderDate: string;
@@ -22,6 +23,7 @@ export interface IOrderStore {
     setOrderDate: (time: string) => void;
     setStoreName: (storeName: string) => void;
     setStoreId: (paramsStoreId: string) => void;
+    setDeliveryTip: (deliveryTip: number) => void;
     addMenu: (idx: number, menu: IOrderItem) => void;
     deleteMenu: (idx: number) => void;
     increaseMenuCount: (idx: number) => void;

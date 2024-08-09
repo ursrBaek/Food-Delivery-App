@@ -4,7 +4,6 @@ import deleteIcon from '../../assets/images/x-icon.png';
 
 export const StyledOrderStoreInfoBox = styled.div`
   margin: 7px 0;
-  padding-top: 10px;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
   text-indent: 15px;
@@ -84,16 +83,28 @@ export const StyledOrderListItem = styled.li`
 `;
 
 export const StyledTotalOrderAmount = styled.div`
-  font-family: 'dohyeon';
-  font-size: 20px;
-  display: flex;
-  justify-content: space-between;
+  font-family: 'jua';
   padding: 15px 30px;
   background-color: #fff;
   margin: 10px 0;
   border-bottom: 2px solid #ddd;
-  .order-price {
-    margin-right: 10px;
+  p {
+    font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    color: #343434;
+  }
+
+  .priceHeader {
+    font-size: 18px;
+    color: #000;
+  }
+  .totalAmount {
+    color: #222;
+    padding-top: 15px;
+    font-size: 20px;
+    border-top: 1px solid #ccc;
   }
 `;
 
