@@ -20,6 +20,10 @@ export interface IOrderItem extends IMenuItem {
   orderCount: number;
 }
 
+export interface IOrderListObj {
+  [key: string]: IOrderItem;
+}
+
 export interface StoreDetailInfo extends StoreInfo {
   tel: string;
   menu: Array<IMenuItem>;
@@ -32,12 +36,13 @@ export interface IReview {
   nickname: string;
 }
 
-export interface IUserOrderListItemRes {
+export interface IUserOrderListItemRes<T> {
+  key?: string;
   storeName: string;
   totalAmount: number;
   deliveryTip: number;
   minPrice: number;
-  orderList: (IOrderItem | null)[];
+  orderList: T;
   storeId: string;
   storeImg: string;
   orderDate: number;

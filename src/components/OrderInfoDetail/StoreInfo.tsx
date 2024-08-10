@@ -1,15 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { IOrderItem, IUserOrderListItemRes } from 'types/responseTypes';
+import { getOrderListAndCount } from 'utils/common';
+import getCurrentDate from 'utils/getCurrentDate';
 
-export default function StoreInfo() {
+interface Props {
+  orderDetailInfo: IUserOrderListItemRes<(IOrderItem | null)[]>;
+  orderId: string;
+}
+
+export default function StoreInfo({ orderDetailInfo, orderId }: Props) {
+  const { firstMenu, menuCount } = getOrderListAndCount(orderDetailInfo.orderList);
   return (
     <div className="storeInfo">
       <p className="order-completed-msg">배달이 완료되었어요</p>
-      <p className="store-name">순살만공격 광주송정점</p>
-      <p className="order-sum">순살치킨양념반후라이드반 외 1개</p>
-      <p className="order-date">주문일시: 2024년 02월 05일 오후 04:53</p>
-      <p className="order-id">주문번호: 002</p>
-      <Link to={'/store/detail/1'}>
+      <p className="store-name">{orderDetailInfo.storeName}</p>
+      <p className="order-sum">
+        {firstMenu} {menuCount > 1 ? `외 ${menuCount - 1}개` : ''}
+      </p>
+      <p className="order-date">주문일시: {getCurrentDate(orderDetailInfo.orderDate)}</p>
+      <p className="order-id">주문번호: {orderId}</p>
+      <Link to={`/store/detail/${orderDetailInfo.storeId}`}>
         <i className="fa-solid fa-store"></i> 가게보기
       </Link>
     </div>

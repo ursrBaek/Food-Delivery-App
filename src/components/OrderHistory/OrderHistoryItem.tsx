@@ -1,25 +1,24 @@
 import React from 'react';
 import { StyledListItem } from './styles';
-import { IUserOrderListItemRes } from 'types/responseTypes';
+import { IOrderItem, IUserOrderListItemRes } from 'types/responseTypes';
 import getCurrentDate from 'utils/getCurrentDate';
 import { useOrderListAction } from 'store';
 import { useNavigate } from 'react-router-dom';
+import { getOrderListAndCount } from 'utils/common';
 
 interface Props {
-  orderInfo: IUserOrderListItemRes;
+  orderInfo: IUserOrderListItemRes<Array<IOrderItem | null>>;
 }
 
 export default function OrderHistoryItem({ orderInfo }: Props) {
   const navigate = useNavigate();
   const { setOrderSameMenu } = useOrderListAction();
 
-  const menuList = [];
-  for (const key in orderInfo.orderList) {
-    menuList.push(orderInfo.orderList[key]);
-  }
-  const menuCount = menuList.reduce((cal, curr, i) => {
-    return cal + (curr?.orderCount || 1);
-  }, 0);
+  const { firstMenu, menuCount } = getOrderListAndCount(orderInfo.orderList);
+
+  const clickOrderDetailView = () => {
+    navigate(`/orderDetail/${orderInfo.key}`);
+  };
 
   const clickAddSameMenu = () => {
     setOrderSameMenu(orderInfo);
@@ -30,14 +29,16 @@ export default function OrderHistoryItem({ orderInfo }: Props) {
     <StyledListItem>
       <div className="dateAndDetailBtn">
         <span className="orderDate">{getCurrentDate(orderInfo.orderDate)}</span>
-        <button className="viewDetailBtn">주문상세</button>
+        <button className="viewDetailBtn" onClick={clickOrderDetailView}>
+          주문상세
+        </button>
       </div>
       <div className="orderInfo">
         <img src={require(`../../assets/images/stores/${orderInfo.storeImg}`)} alt={`${orderInfo.storeName} 이미지`} />
         <div>
           <p className="storeName">{orderInfo.storeName}</p>
           <p className="orderMenu">
-            {menuList[0]?.foodName} {menuCount > 1 ? `외 ${menuCount - 1}` : ''}
+            {firstMenu} {menuCount > 1 ? `외 ${menuCount - 1}` : ''}
           </p>
           <p className="orderPrice">총 결제금액: {orderInfo.totalAmount.toLocaleString()}원</p>
         </div>

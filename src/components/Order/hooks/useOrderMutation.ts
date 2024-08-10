@@ -1,6 +1,6 @@
 import { child, push, ref, set } from '@firebase/database';
 import { db } from '../../../firebase';
-import { IUserOrderListItemReq, IUserOrderListItemRes } from 'types/responseTypes';
+import { IOrderListObj, IUserOrderListItemReq, IUserOrderListItemRes } from 'types/responseTypes';
 import { getDataFromDB } from 'utils/getDataFromDB';
 import { useMutation, UseMutationResult } from '@tanstack/react-query';
 
@@ -9,18 +9,18 @@ export interface IOrderInfo {
   orderDetail: IUserOrderListItemReq;
 }
 
-const addOrderedInfoApi = async (orderInfo: IOrderInfo): Promise<IUserOrderListItemRes | undefined> => {
+const addOrderedInfoApi = async (orderInfo: IOrderInfo): Promise<IUserOrderListItemRes<IOrderListObj> | undefined | null> => {
   const key = push(child(ref(db), `users/${orderInfo.userId}/orderList`)).key;
   await set(ref(db, `users/${orderInfo.userId}/orderList/` + key), orderInfo.orderDetail);
 
-  const orderedInfo = await getDataFromDB(`users/${orderInfo.userId}/orderList/${key}`);
+  const orderedInfo: IUserOrderListItemRes<IOrderListObj> | undefined | null = await getDataFromDB(
+    `users/${orderInfo.userId}/orderList/${key}`,
+  );
 
-  if (orderedInfo) {
-    return orderedInfo;
-  }
+  return orderedInfo;
 };
 
-export default function useOrderMutation(): UseMutationResult<IUserOrderListItemRes | undefined, Error, IOrderInfo> {
+export default function useOrderMutation(): UseMutationResult<IUserOrderListItemRes<IOrderListObj> | undefined | null, Error, IOrderInfo> {
   return useMutation({
     mutationFn: addOrderedInfoApi,
     onError(err) {

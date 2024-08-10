@@ -24,12 +24,8 @@ export interface IOrderStore {
   actions: {
     setOrderInit: () => void;
     setOrderDate: (time: string) => void;
-    setStoreName: (storeName: string) => void;
-    setStoreId: (paramsStoreId: string) => void;
-    setStoreImg: (storeImg: string) => void;
-    setMinPrice: (minPrice: number) => void;
-    setDeliveryTip: (deliveryTip: number) => void;
-    setOrderSameMenu: (orderInfo: IUserOrderListItemRes) => void;
+    setCurrentStoreInfo: (storeId: string, storeName: string, deliveryTip: number, minPrice: number, storeImg: string) => void;
+    setOrderSameMenu: (orderInfo: IUserOrderListItemRes<Array<IOrderItem | null>>) => void;
     addMenu: (idx: number, menu: IOrderItem) => void;
     deleteMenu: (idx: number) => void;
     increaseMenuCount: (idx: number) => void;

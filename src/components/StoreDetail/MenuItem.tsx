@@ -12,7 +12,7 @@ interface Props {
 function MenuItem({ menu, idx, checked }: Props) {
   const { addMenu, deleteMenu } = useOrderListAction();
 
-  const clickMenu = (e: React.MouseEvent<HTMLInputElement>) => {
+  const clickMenu = () => {
     if (checked) {
       deleteMenu(idx);
     } else {

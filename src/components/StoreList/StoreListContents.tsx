@@ -11,12 +11,14 @@ interface Props {
 function StoreListContents({ storeLists }: Props) {
   const { category } = useParams();
 
+  const isLikedStoreListPage = !category;
+
   return (
     <>
       {storeLists.map((store) => (
         <StoreItem key={store.id} store={store} />
       ))}
-      {!category && storeLists.length === 0 && <Message>{'찜하기 한 가게가 없습니다.'}</Message>}
+      {isLikedStoreListPage && storeLists.length === 0 && <Message>{'찜하기 한 가게가 없습니다.'}</Message>}
     </>
   );
 }

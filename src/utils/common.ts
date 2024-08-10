@@ -1,3 +1,5 @@
+import { IOrderItem } from 'types/responseTypes';
+
 interface ICategoryName {
   [key: string]: string;
 }
@@ -13,4 +15,13 @@ export const categoryName: ICategoryName = {
   pizza: '피자',
   schoolFood: '분식',
   salad: '샐러드',
+};
+
+export const getOrderListAndCount = (orderList: (IOrderItem | null)[]) => {
+  const firstMenu: string | undefined = orderList.find((order) => order?.foodName)?.foodName;
+  const menuCount = orderList.reduce((cal, curr, i) => {
+    return cal + (curr?.orderCount || 1);
+  }, 0);
+
+  return { firstMenu, menuCount };
 };

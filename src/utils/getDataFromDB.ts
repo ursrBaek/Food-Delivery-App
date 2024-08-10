@@ -1,9 +1,9 @@
 import { get, ref } from '@firebase/database';
 import { db } from '../firebase';
 
-export const getDataFromDB = async (path: string) => {
+export const getDataFromDB = async <T>(path: string): Promise<T | null> => {
   try {
-    let data;
+    let data: T | null = null;
     await get(ref(db, path)).then((snapshot) => {
       if (snapshot.exists()) {
         data = snapshot.val();
@@ -13,5 +13,6 @@ export const getDataFromDB = async (path: string) => {
     return data;
   } catch (e) {
     console.log(e);
+    return null; // 오류 발생 시 null 반환
   }
 };
