@@ -4,7 +4,7 @@ import { get, orderByChild, query, ref } from 'firebase/database';
 import { IReview } from 'types/responseTypes';
 
 export const getReviewApi = async (storeId: string) => {
-  let reviewList: Array<IReview> = [];
+  let reviewList: IReview[] = [];
   await get(query(ref(db, `reviews/${storeId}`), orderByChild('date'))).then((snapshot) => {
     if (snapshot.exists()) {
       snapshot.forEach((child) => {
@@ -19,7 +19,7 @@ export const getReviewApi = async (storeId: string) => {
   return reviewList.reverse();
 };
 
-const useReviewQuery = (storeId: string): UseQueryResult<Array<IReview>, Error> =>
+const useReviewQuery = (storeId: string): UseQueryResult<IReview[], Error> =>
   useQuery({
     queryKey: ['reviews', storeId],
     queryFn: () => getReviewApi(storeId),

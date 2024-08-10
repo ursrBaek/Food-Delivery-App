@@ -1,4 +1,4 @@
-import { IOrderItem, IOrderListObj } from 'types/responseTypes';
+import { IOrderItem } from 'types/responseTypes';
 
 interface ICategoryName {
   [key: string]: string;
@@ -17,17 +17,11 @@ export const categoryName: ICategoryName = {
   salad: '샐러드',
 };
 
-export const getOrderListAndCount = (orderList: IOrderListObj) => {
-  const menuList: IOrderItem[] = [];
-  for (const key in orderList) {
-    const menu = orderList[key];
-    if (menu !== null) {
-      menuList.push(menu);
-    }
-  }
-  const menuCount = menuList.reduce((cal, curr, i) => {
+export const getOrderListAndCount = (orderList: (IOrderItem | null)[]) => {
+  const firstMenu: string | undefined = orderList.find((order) => order?.foodName)?.foodName;
+  const menuCount = orderList.reduce((cal, curr, i) => {
     return cal + (curr?.orderCount || 1);
   }, 0);
 
-  return { menuList, menuCount };
+  return { firstMenu, menuCount };
 };

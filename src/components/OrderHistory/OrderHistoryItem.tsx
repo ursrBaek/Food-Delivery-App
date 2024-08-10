@@ -7,14 +7,14 @@ import { useNavigate } from 'react-router-dom';
 import { getOrderListAndCount } from 'utils/common';
 
 interface Props {
-  orderInfo: IUserOrderListItemRes;
+  orderInfo: IUserOrderListItemRes<Array<IOrderItem | null>>;
 }
 
 export default function OrderHistoryItem({ orderInfo }: Props) {
   const navigate = useNavigate();
   const { setOrderSameMenu } = useOrderListAction();
 
-  const { menuList, menuCount } = getOrderListAndCount(orderInfo.orderList);
+  const { firstMenu, menuCount } = getOrderListAndCount(orderInfo.orderList);
 
   const clickOrderDetailView = () => {
     navigate(`/orderDetail/${orderInfo.key}`);
@@ -38,7 +38,7 @@ export default function OrderHistoryItem({ orderInfo }: Props) {
         <div>
           <p className="storeName">{orderInfo.storeName}</p>
           <p className="orderMenu">
-            {menuList[0]?.foodName} {menuCount > 1 ? `외 ${menuCount - 1}` : ''}
+            {firstMenu} {menuCount > 1 ? `외 ${menuCount - 1}` : ''}
           </p>
           <p className="orderPrice">총 결제금액: {orderInfo.totalAmount.toLocaleString()}원</p>
         </div>

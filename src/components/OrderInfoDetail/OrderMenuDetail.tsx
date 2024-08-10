@@ -1,18 +1,16 @@
 import React from 'react';
 import OrderMenuItem from './OrderMenuItem';
-import { IUserOrderListItemRes } from 'types/responseTypes';
-import { getOrderListAndCount } from 'utils/common';
+import { IOrderItem, IUserOrderListItemRes } from 'types/responseTypes';
 
 interface Props {
-  orderDetailInfo: IUserOrderListItemRes;
+  orderDetailInfo: IUserOrderListItemRes<(IOrderItem | null)[]>;
 }
 
 function OrderMenuDetail({ orderDetailInfo }: Props) {
-  const { menuList } = getOrderListAndCount(orderDetailInfo.orderList);
   return (
     <div>
       <h2>주문내역</h2>
-      {menuList.length && <ul>{menuList.map((menu) => menu && <OrderMenuItem menu={menu} key={menu?.foodName} />)}</ul>}
+      {<ul>{orderDetailInfo.orderList.map((menu) => menu && <OrderMenuItem menu={menu} key={menu?.foodName} />)}</ul>}
     </div>
   );
 }

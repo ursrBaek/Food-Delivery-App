@@ -36,13 +36,13 @@ export interface IReview {
   nickname: string;
 }
 
-export interface IUserOrderListItemRes {
-  key: string;
+export interface IUserOrderListItemRes<T> {
+  key?: string;
   storeName: string;
   totalAmount: number;
   deliveryTip: number;
   minPrice: number;
-  orderList: IOrderListObj;
+  orderList: T;
   storeId: string;
   storeImg: string;
   orderDate: number;

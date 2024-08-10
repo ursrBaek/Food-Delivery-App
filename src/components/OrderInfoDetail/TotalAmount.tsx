@@ -1,8 +1,8 @@
 import React from 'react';
-import { IUserOrderListItemRes } from 'types/responseTypes';
+import { IOrderItem, IUserOrderListItemRes } from 'types/responseTypes';
 
 interface Props {
-  orderDetailInfo: IUserOrderListItemRes;
+  orderDetailInfo: IUserOrderListItemRes<(IOrderItem | null)[]>;
 }
 
 export default function TotalAmount({ orderDetailInfo }: Props) {

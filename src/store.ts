@@ -3,7 +3,7 @@ import { auth } from './firebase';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
-import { IOrderItem, IUserOrderListItemRes } from 'types/responseTypes';
+import { IOrderItem } from 'types/responseTypes';
 
 // user 정보 스토어
 
@@ -40,25 +40,20 @@ const useOrderStore = create<IOrderStore>()(
       totalAmount: 0,
       orderDate: '',
       actions: {
-        // 액션함수 하나로 묶기!!!!!!!!!!!
+        setCurrentStoreInfo: (storeId, storeName, deliveryTip, minPrice, storeImg) => {
+          set((state) => {
+            if (state.storeId && state.storeId !== storeId) {
+              return { storeId, storeName, deliveryTip, minPrice, storeImg, orderList: [], totalAmount: 0 };
+            } else if (!state.storeId) {
+              return { storeId, storeName, deliveryTip, minPrice, storeImg };
+            } else return state;
+          });
+        },
         setOrderInit: () =>
           set({ storeName: '', storeId: '', orderList: [], deliveryTip: 0, storeImg: '', minPrice: 0, totalAmount: 0, orderDate: '' }),
-        setOrderDate: (date: string) => set((state) => ({ orderDate: date })),
-        setStoreName: (storeName: string) => set((state) => ({ storeName })),
-        setDeliveryTip: (deliveryTip: number) => set((state) => ({ deliveryTip })),
-        setStoreImg: (storeImg: string) => set((state) => ({ storeImg })),
-        setMinPrice: (minPrice: number) => set((state) => ({ minPrice })),
-        setStoreId: (paramsStoreId) =>
-          set((state) => {
-            if (state.storeId && state.storeId !== paramsStoreId) {
-              return { storeId: paramsStoreId, orderList: [], totalAmount: 0 };
-            } else if (!state.storeId) {
-              return { storeId: paramsStoreId };
-            }
-            return state;
-          }),
-        setOrderSameMenu: (orderInfo: IUserOrderListItemRes) =>
-          set((state) => ({
+        setOrderDate: (date: string) => set({ orderDate: date }),
+        setOrderSameMenu: (orderInfo) =>
+          set({
             storeName: orderInfo.storeName,
             storeId: orderInfo.storeId,
             orderList: orderInfo.orderList,
@@ -67,37 +62,41 @@ const useOrderStore = create<IOrderStore>()(
             minPrice: orderInfo.minPrice,
             totalAmount: orderInfo.totalAmount,
             orderDate: '',
-          })),
+          }),
         addMenu: (idx, menu) => {
-          return set((state) => {
+          set((state) => {
             state.orderList[idx] = menu;
-            state.totalAmount = calculateTotalAmount(state.orderList as IOrderItem[], state.deliveryTip);
+            state.totalAmount = calculateTotalAmount(state.orderList, state.deliveryTip);
           });
         },
         deleteMenu: (idx) => {
-          return set((state) => {
+          set((state) => {
             state.orderList[idx] = null;
-            state.totalAmount = calculateTotalAmount(state.orderList as IOrderItem[], state.deliveryTip);
+            state.totalAmount = calculateTotalAmount(state.orderList, state.deliveryTip);
           });
         },
         increaseMenuCount: (idx) =>
           set((state) => {
-            const orderItem = state.orderList[idx] as IOrderItem;
-            orderItem.orderCount += 1;
-            state.totalAmount = calculateTotalAmount(state.orderList as IOrderItem[], state.deliveryTip);
+            const orderItem = state.orderList[idx];
+            if (orderItem) {
+              orderItem.orderCount += 1;
+            }
+            state.totalAmount = calculateTotalAmount(state.orderList, state.deliveryTip);
           }),
         decreaseMenuCount: (idx) =>
           set((state) => {
-            const orderItem = state.orderList[idx] as IOrderItem;
-            orderItem.orderCount -= 1;
-            state.totalAmount = calculateTotalAmount(state.orderList as IOrderItem[], state.deliveryTip);
+            const orderItem = state.orderList[idx];
+            if (orderItem) {
+              orderItem.orderCount -= 1;
+            }
+            state.totalAmount = calculateTotalAmount(state.orderList, state.deliveryTip);
           }),
       },
     })),
   ),
 );
 
-function calculateTotalAmount(orderList: (IOrderItem | null)[], deliveryTip: number) {
+function calculateTotalAmount(orderList: (IOrderItem | null)[], deliveryTip: number): number {
   return (
     deliveryTip +
     orderList.filter((menu): menu is IOrderItem => menu !== null).reduce((curr, menu) => curr + menu.foodPrice * menu.orderCount, 0)
@@ -105,11 +104,7 @@ function calculateTotalAmount(orderList: (IOrderItem | null)[], deliveryTip: num
 }
 
 export const useStoreName = () => useOrderStore((state) => state.storeName);
-export const useStoreId = () => useOrderStore((state) => state.storeId);
-export const useTotalAmount = () => useOrderStore((state) => state.totalAmount);
-export const useDeliveryTip = () => useOrderStore((state) => state.deliveryTip);
 export const useOrderList = () => useOrderStore((state) => state.orderList);
-export const useOrderDate = () => useOrderStore((state) => state.orderDate);
 export const useOrderInfo = () =>
   useOrderStore((state) => ({
     storeName: state.storeName,
