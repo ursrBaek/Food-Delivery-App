@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyledListItem } from './styles';
-import { IUserOrderListItemRes } from 'types/responseTypes';
+import { IOrderItem, IUserOrderListItemRes } from 'types/responseTypes';
 import getCurrentDate from 'utils/getCurrentDate';
 import { useOrderListAction } from 'store';
 import { useNavigate } from 'react-router-dom';
+import { getOrderListAndCount } from 'utils/common';
 
 interface Props {
   orderInfo: IUserOrderListItemRes;
@@ -13,13 +14,11 @@ export default function OrderHistoryItem({ orderInfo }: Props) {
   const navigate = useNavigate();
   const { setOrderSameMenu } = useOrderListAction();
 
-  const menuList = [];
-  for (const key in orderInfo.orderList) {
-    menuList.push(orderInfo.orderList[key]);
-  }
-  const menuCount = menuList.reduce((cal, curr, i) => {
-    return cal + (curr?.orderCount || 1);
-  }, 0);
+  const { menuList, menuCount } = getOrderListAndCount(orderInfo.orderList);
+
+  const clickOrderDetailView = () => {
+    navigate(`/orderDetail/${orderInfo.key}`);
+  };
 
   const clickAddSameMenu = () => {
     setOrderSameMenu(orderInfo);
@@ -30,7 +29,9 @@ export default function OrderHistoryItem({ orderInfo }: Props) {
     <StyledListItem>
       <div className="dateAndDetailBtn">
         <span className="orderDate">{getCurrentDate(orderInfo.orderDate)}</span>
-        <button className="viewDetailBtn">주문상세</button>
+        <button className="viewDetailBtn" onClick={clickOrderDetailView}>
+          주문상세
+        </button>
       </div>
       <div className="orderInfo">
         <img src={require(`../../assets/images/stores/${orderInfo.storeImg}`)} alt={`${orderInfo.storeName} 이미지`} />

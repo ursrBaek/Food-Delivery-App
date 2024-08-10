@@ -30,6 +30,7 @@ export interface IOrderStore {
     setMinPrice: (minPrice: number) => void;
     setDeliveryTip: (deliveryTip: number) => void;
     setOrderSameMenu: (orderInfo: IUserOrderListItemRes) => void;
+    // setClickedOrderDetail: (orderInfo: IUserOrderListItemRes) => void;
     addMenu: (idx: number, menu: IOrderItem) => void;
     deleteMenu: (idx: number) => void;
     increaseMenuCount: (idx: number) => void;

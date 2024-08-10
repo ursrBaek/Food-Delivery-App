@@ -97,15 +97,10 @@ const useOrderStore = create<IOrderStore>()(
   ),
 );
 
-function calculateTotalAmount(orderList: IOrderItem[], deliveryTip: number) {
+function calculateTotalAmount(orderList: (IOrderItem | null)[], deliveryTip: number) {
   return (
     deliveryTip +
-    orderList.reduce((curr, menu) => {
-      if (menu) {
-        return curr + menu.foodPrice * menu.orderCount;
-      }
-      return curr;
-    }, 0)
+    orderList.filter((menu): menu is IOrderItem => menu !== null).reduce((curr, menu) => curr + menu.foodPrice * menu.orderCount, 0)
   );
 }
 
