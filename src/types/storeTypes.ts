@@ -1,4 +1,4 @@
-import { IOrderItem, IUserOrderListItemRes } from './responseTypes';
+import { IOrderItem, IUserOrderListItemRes, StoreInfo } from './responseTypes';
 
 export interface IUserStore {
   loading: boolean;
@@ -30,5 +30,14 @@ export interface IOrderStore {
     deleteMenu: (idx: number) => void;
     increaseMenuCount: (idx: number) => void;
     decreaseMenuCount: (idx: number) => void;
+  };
+}
+
+export interface IRecentStores {
+  loading: boolean;
+  recentStores: StoreInfo[];
+  actions: {
+    setRecentStoreLoading: (bool: boolean) => void;
+    setRecentStore: (stores: StoreInfo[]) => void;
   };
 }

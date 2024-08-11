@@ -1,4 +1,4 @@
-import { IOrderStore, IUserStore } from 'types/storeTypes';
+import { IOrderStore, IRecentStores, IUserStore } from 'types/storeTypes';
 import { auth } from './firebase';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
@@ -118,3 +118,25 @@ export const useOrderInfo = () =>
   }));
 
 export const useOrderListAction = () => useOrderStore((state) => state.actions);
+
+// 로컬스토리지의 최근 조회 가게
+const useRecentStoresStore = create<IRecentStores>()(
+  devtools(
+    immer((set) => ({
+      loading: false,
+      recentStores: [],
+      actions: {
+        setRecentStoreLoading: (bool) => {
+          set({ loading: bool });
+        },
+        setRecentStore: (stores) => {
+          set({ recentStores: stores });
+        },
+      },
+    })),
+  ),
+);
+
+export const useRecentStoresLoading = () => useRecentStoresStore((state) => state.loading);
+export const useRecentStores = () => useRecentStoresStore((state) => state.recentStores);
+export const useRecentStoresActions = () => useRecentStoresStore((state) => state.actions);
