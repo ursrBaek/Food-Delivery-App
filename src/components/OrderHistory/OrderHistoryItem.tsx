@@ -25,6 +25,11 @@ export default function OrderHistoryItem({ orderInfo }: Props) {
     navigate(`/order/${orderInfo.storeId}`);
   };
 
+  const clickMoveToReviewWrite = () => {
+    setOrderSameMenu(orderInfo);
+    navigate(`/review/${orderInfo.key}`);
+  };
+
   return (
     <StyledListItem>
       <div className="dateAndDetailBtn">
@@ -46,7 +51,7 @@ export default function OrderHistoryItem({ orderInfo }: Props) {
       <button className="AddToOrderBtn" onClick={clickAddSameMenu}>
         같은 메뉴 담기
       </button>
-      <button className={`reviewBtn ${orderInfo.review ? 'disabled' : ''}`} disabled={!orderInfo.review}>
+      <button className={`reviewBtn ${orderInfo.review ? 'disabled' : ''}`} disabled={orderInfo.review} onClick={clickMoveToReviewWrite}>
         리뷰 쓰기 {orderInfo.review && '( 작성완료 )'}
       </button>
     </StyledListItem>

@@ -26,7 +26,7 @@ const privateRoutes = [
   { path: '/bill', component: <Bill /> },
   { path: '/order/:storeId', component: <Order /> },
   { path: '/orderDetail/:orderId', component: <OrderInfoDetail /> },
-  { path: '/review/:storeId', component: <Review /> },
+  { path: '/review/:orderId', component: <Review /> },
   { path: '/mypage', component: <MyPage /> },
 ];
 
