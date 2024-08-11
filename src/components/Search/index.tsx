@@ -12,9 +12,11 @@ export default function Index() {
     <>
       <SearchContainer>
         <PrevButton />
-        <SearchInput />
+        <SearchInput searchText={searchText} setSearchText={setSearchText} />
       </SearchContainer>
-      <SearchContentsContainer>{!searchText ? <SearchResults /> : <RecentStores />}</SearchContentsContainer>
+      <SearchContentsContainer>
+        <SearchContentsContainer>{searchText ? <SearchResults searchText={searchText} /> : <RecentStores />}</SearchContentsContainer>
+      </SearchContentsContainer>
     </>
   );
 }

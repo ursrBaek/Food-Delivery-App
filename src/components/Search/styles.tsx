@@ -46,18 +46,25 @@ export const SearchContentsContainer = styled.div`
   flex-grow: 1;
 
   h2 {
-    color: rgb(97, 99, 101);
+    color: rgb(72, 72, 72);
     font-size: 20px;
     padding: 32px 0px 16px;
     border-bottom: 1px solid rgb(201, 205, 210);
     margin-bottom: 2.5%;
   }
-  .infoMsg {
+  .infoMsg,
+  .error {
     margin-top: 30px;
     font-size: 20px;
-    color: rgb(162, 162, 162);
     text-align: center;
   }
+  .infoMsg {
+    color: rgb(45, 45, 45);
+  }
+  .error {
+    color: rgb(124, 32, 32);
+  }
+
   ul {
     li {
       margin-bottom: 2.5%;
