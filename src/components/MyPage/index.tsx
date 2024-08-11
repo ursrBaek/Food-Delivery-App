@@ -3,7 +3,7 @@ import PrevButton from 'components/common/PrevButton';
 import React from 'react';
 import UserInfo from './UserInfo';
 import { MyPageContainer } from './styles';
-import { useUserActions } from 'store';
+import { useUserActions, useUserId } from 'store';
 import { auth } from '../../firebase';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
@@ -11,11 +11,13 @@ import { useNavigate } from 'react-router-dom';
 export default function MyPage() {
   const { setInitUser } = useUserActions();
   const navigate = useNavigate();
+  const userId = useUserId();
 
   const logOut = () => {
     if (window.confirm('로그아웃 하시겠습니까?')) {
       setInitUser();
       signOut(auth);
+      localStorage.removeItem('recentStores-' + userId);
       navigate('/login');
     }
   };

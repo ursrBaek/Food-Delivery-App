@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useRecentStores, useRecentStoresActions, useUserId } from 'store';
 import { StoreInfo } from 'types/responseTypes';
 import { categoryName } from 'utils/common';
 
@@ -8,6 +9,21 @@ interface Props {
 }
 
 export default function StoreListItem({ storeInfo }: Props) {
+  const { setRecentStore } = useRecentStoresActions();
+  const recentStores = useRecentStores();
+  const userId = useUserId();
+
+  const clickDeleteBtn = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    e.preventDefault();
+
+    const STORAGE_KEY = 'recentStores-' + userId;
+    const newRecentStore = [...recentStores];
+    const findIdx = newRecentStore.findIndex((store) => store.id === storeInfo.id);
+    newRecentStore.splice(findIdx, 1);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(newRecentStore));
+    setRecentStore(newRecentStore);
+  };
+
   return (
     <li>
       <Link to={`/store/detail/${storeInfo.id}`}>
@@ -16,6 +32,7 @@ export default function StoreListItem({ storeInfo }: Props) {
           <p className="storeName">{storeInfo.storeName}</p>
           <p className="category">{categoryName[storeInfo.category]}</p>
         </div>
+        <i className="fa-solid fa-xmark" onClick={clickDeleteBtn}></i>
       </Link>
     </li>
   );

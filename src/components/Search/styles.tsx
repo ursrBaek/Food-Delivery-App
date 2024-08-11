@@ -67,7 +67,8 @@ export const SearchContentsContainer = styled.div`
 
   ul {
     li {
-      margin-bottom: 2.5%;
+      border-bottom: 1px solid #ddd;
+      padding: 2.5%;
 
       a {
         display: flex;
@@ -97,7 +98,7 @@ export const SearchContentsContainer = styled.div`
           align-self: center;
           font-size: 25px;
           &:hover {
-            color: #e08e00;
+            color: #ff8c00;
           }
         }
       }
