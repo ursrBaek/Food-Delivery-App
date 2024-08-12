@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const MyPageContainer = styled.div`
+  padding-top: 15px;
   flex-grow: 1;
   background-color: #f1f1f1;
   position: relative;
@@ -15,22 +16,14 @@ export const MyPageContainer = styled.div`
     color: #606060;
     width: 93%;
     margin: 20px auto;
+    letter-spacing: 1px;
+
     p {
       margin: 3%;
       span {
         font-size: 20px;
       }
     }
-  }
-
-  .logout {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    padding: 10px;
-    color: #4a4a4a;
-    font-size: 18px;
-    font-family: jua;
   }
 `;
 
@@ -74,7 +67,6 @@ export const UserRankInfo = styled.div`
     padding: 10px;
     font-size: 40px;
     margin-right: 5%;
-    /* margin-left: 13%; */
   }
   p {
     display: flex;
@@ -92,11 +84,12 @@ export const UserRankInfo = styled.div`
 `;
 
 export const UserDashboard = styled.div`
-  /* background-color: pink; */
   width: 100%;
   display: flex;
   justify-content: space-around;
-  a {
+  a,
+  button {
+    font-family: 'jua';
     text-align: center;
     i {
       font-size: 25px;
@@ -109,12 +102,10 @@ export const UserDashboard = styled.div`
       &.fa-heart {
         color: #ff3b00;
       }
-      &.fa-comment-dots {
-        color: #005ac7;
-      }
     }
     span {
       display: block;
+      font-size: 16px;
     }
   }
 `;
