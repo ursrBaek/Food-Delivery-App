@@ -34,6 +34,8 @@ export const StyledSection = styled.section<SectionProps>`
       img {
         display: inline-block;
         width: 100%;
+        min-width: 100%;
+        height: 46.67%;
       }
 
       &.onAnimate {
@@ -72,7 +74,6 @@ export const AddSection = styled.section`
   border-radius: 7px;
   background-image: url(${orangePaper});
   background-size: cover;
-  /* background-color: #fb2728; */
   color: #ffffff;
   font-size: 19px;
   font-family: 'hanna';
