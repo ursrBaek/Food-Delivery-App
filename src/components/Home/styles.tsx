@@ -121,9 +121,11 @@ export const MenuRecommendationSection = styled.section`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+  max-height: 300px;
   padding: 0 2.5%;
   margin-bottom: 2.5%;
-  a {
+  div {
+    display: inline-block;
     background-image: url(${coolImage});
     background-size: cover;
     border-radius: 5px;
@@ -138,13 +140,13 @@ export const MenuRecommendationSection = styled.section`
     opacity: 0.9;
     text-shadow: 0px 0px 7px #000000;
   }
-  a:first-child {
+  div:first-child {
     background-image: url(${spicyImage});
   }
-  a:nth-child(2) {
+  div:nth-child(2) {
     background-image: url(${hotImage});
   }
-  a:last-child {
+  div:last-child {
     background-image: url(${coolImage});
   }
 `;
