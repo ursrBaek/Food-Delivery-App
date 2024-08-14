@@ -56,6 +56,10 @@ export const StyledHeader = styled.header`
     color: #fff;
     opacity: 1;
     transition: all 0.1s ease-in-out;
+
+    &.hide {
+      opacity: 0;
+    }
   }
 
   div {
