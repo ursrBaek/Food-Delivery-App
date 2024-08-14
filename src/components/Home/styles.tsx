@@ -27,6 +27,7 @@ export const StyledSection = styled.section<SectionProps>`
     border-radius: 7px;
     position: relative;
     overflow: hidden;
+    background-color: #ddd;
     .bannerItemContainer {
       width: auto;
       display: flex;
@@ -35,7 +36,9 @@ export const StyledSection = styled.section<SectionProps>`
         display: inline-block;
         width: 100%;
         min-width: 100%;
-        height: 46.67%;
+        height: auto;
+        aspect-ratio: 675 / 315;
+        object-fit: cover;
       }
 
       &.onAnimate {
@@ -77,6 +80,7 @@ export const AddSection = styled.section`
   color: #ffffff;
   font-size: 19px;
   font-family: 'hanna';
+  background-color: #ddd;
 `;
 
 export const CategoryList = styled.ul`
@@ -126,6 +130,7 @@ export const MenuRecommendationSection = styled.section`
   padding: 0 2.5%;
   margin-bottom: 2.5%;
   div {
+    background-color: #ddd;
     display: inline-block;
     background-image: url(${coolImage});
     background-size: cover;
