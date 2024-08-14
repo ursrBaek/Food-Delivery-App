@@ -109,7 +109,8 @@ export const MenuWrapper = styled.div`
           line-height: 40px;
           vertical-align: bottom;
 
-          &.select {
+          &.select,
+          &.select + span {
             color: #d15c03;
           }
         }
