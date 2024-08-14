@@ -149,4 +149,18 @@ export const Message = styled.p<IsError>`
   text-align: center;
   padding: 100px 0;
   color: ${(props: IsError) => (props.$error ? 'red' : '#333')};
+
+  a {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-size: 20px;
+    color: #ab4a00;
+    border: 1px solid #ab4a00;
+    &:hover {
+      color: #fff;
+      background-color: #ab4a00;
+    }
+  }
 `;

@@ -1,19 +1,25 @@
 import { auth } from '../../firebase';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { useUserActions, useUserId } from 'store';
+import { useOrderListAction, useRecentStoresActions, useUserActions, useUserId } from 'store';
 
 function LogoutBtn() {
   const { setInitUser } = useUserActions();
+  const { setOrderInit } = useOrderListAction();
+  const { setInitRecentStores } = useRecentStoresActions();
   const userId = useUserId();
   const navigate = useNavigate();
 
-  const logOut = () => {
+  const logOut = async () => {
     if (window.confirm('로그아웃 하시겠습니까?')) {
-      setInitUser();
-      signOut(auth);
       localStorage.removeItem('recentStores-' + userId);
-      navigate('/login');
+
+      alert('로그아웃 되었습니다.');
+      await setInitUser();
+      await signOut(auth);
+      await setOrderInit();
+      await setInitRecentStores();
+      navigate('/');
     }
   };
 

@@ -16,7 +16,7 @@ export default function StoreListItem({ storeInfo }: Props) {
   const clickDeleteBtn = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     e.preventDefault();
 
-    const STORAGE_KEY = 'recentStores-' + userId;
+    const STORAGE_KEY = 'recentStores-' + (userId || '');
     const newRecentStore = [...recentStores];
     const findIdx = newRecentStore.findIndex((store) => store.id === storeInfo.id);
     newRecentStore.splice(findIdx, 1);

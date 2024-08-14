@@ -10,6 +10,10 @@ interface Props {
 export default function SearchResults({ searchText }: Props) {
   const { isLoading, data: allStores, isError } = useAllStoresQuery();
 
+  if (!searchText) {
+    return <h2> 가게 이름을 검색해보세요.</h2>;
+  }
+
   const filteredStoresArr = filterContainingTextStore(allStores as StoreIdListResponse, searchText);
 
   return (

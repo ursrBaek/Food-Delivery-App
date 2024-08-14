@@ -132,6 +132,9 @@ const useRecentStoresStore = create<IRecentStores>()(
         setRecentStore: (stores) => {
           set({ recentStores: stores });
         },
+        setInitRecentStores: () => {
+          set({ recentStores: [] });
+        },
       },
     })),
   ),

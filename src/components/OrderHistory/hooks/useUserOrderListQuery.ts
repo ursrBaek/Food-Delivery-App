@@ -8,6 +8,7 @@ export const userOrderListApi = async (userId: string): Promise<IUserOrderListIt
   const orderList: IUserOrderListItemRes<(IOrderItem | null)[]>[] = [];
 
   try {
+    if (!userId) return [];
     const snapshot = await get(query(ref(db, `users/${userId}/orderList`), orderByChild('orderDate')));
 
     if (snapshot.exists()) {

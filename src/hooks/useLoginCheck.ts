@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-const useLoginCheck = (id: string, callback: () => void) => {
+const useLoginCheck = (id: string, callback?: () => void) => {
   const navigate = useNavigate();
 
   return () => {
@@ -10,7 +10,7 @@ const useLoginCheck = (id: string, callback: () => void) => {
         return;
       }
     } else {
-      callback();
+      if (callback) callback();
     }
   };
 };
