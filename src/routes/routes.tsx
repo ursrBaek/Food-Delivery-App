@@ -18,16 +18,16 @@ const publicRoutes = [
   { path: '/store/detail/:storeId', component: <StoreDetail /> },
   { path: '/login', component: <Login /> },
   { path: '/signup', component: <SignUp /> },
+  { path: '/mypage', component: <MyPage /> },
+  { path: '/orderHistory', component: <OrderHistory /> },
+  { path: '/likes', component: <StoreList /> },
 ];
 
 const privateRoutes = [
-  { path: '/orderHistory', component: <OrderHistory /> },
-  { path: '/likes', component: <StoreList /> },
   { path: '/bill', component: <Bill /> },
   { path: '/order/:storeId', component: <Order /> },
   { path: '/orderDetail/:orderId', component: <OrderInfoDetail /> },
   { path: '/review/:orderId', component: <Review /> },
-  { path: '/mypage', component: <MyPage /> },
 ];
 
 export { publicRoutes, privateRoutes };

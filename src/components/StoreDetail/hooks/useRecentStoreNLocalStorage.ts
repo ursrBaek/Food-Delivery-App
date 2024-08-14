@@ -4,13 +4,13 @@ import { StoreInfo } from 'types/responseTypes';
 
 const STORAGE_KEY_PREFIX = 'recentStores-';
 
-function useRecentStoreNLocalStorage(storeDetailInfo: StoreInfo | undefined, userId: string) {
+function useRecentStoreNLocalStorage(storeDetailInfo: StoreInfo | undefined, userId: string | undefined) {
   const recentStores = useRecentStores();
   const { setRecentStore } = useRecentStoresActions();
 
   useEffect(() => {
     if (storeDetailInfo) {
-      const STORAGE_KEY = STORAGE_KEY_PREFIX + userId;
+      const STORAGE_KEY = STORAGE_KEY_PREFIX + (userId || '');
       const findIndex = recentStores.findIndex((store) => store.id === storeDetailInfo.id);
       let newRecentStores;
 

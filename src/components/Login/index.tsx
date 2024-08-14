@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useCallback, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 
 import AuthTemplate from 'components/AuthTemplate';
 import { AuthButton, Error } from 'components/AuthTemplate/styles';
@@ -70,13 +70,12 @@ export default function Login() {
     }
   };
 
-  const userNickname = useUserNickname();
-
-  if (userNickname && !loading) {
-    alert('이미 로그인 상태입니다.');
-    navigate('/');
-    return null;
-  }
+  useEffect(() => {
+    if (auth.currentUser) {
+      alert('이미 로그인 상태입니다.');
+      navigate('/');
+    }
+  }, [navigate]);
 
   return (
     <AuthTemplate>

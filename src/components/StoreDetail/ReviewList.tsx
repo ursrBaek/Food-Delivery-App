@@ -1,7 +1,6 @@
 import { StoreDetailInfo } from 'types/responseTypes';
 import ReviewItem from './ReviewItem';
 import { Empty, Loading, ReviewInfoBox } from './styles';
-import { useParams } from 'react-router-dom';
 import useReviewQuery from './hooks/useReviewQuery';
 
 interface Props {
@@ -9,9 +8,7 @@ interface Props {
 }
 
 function ReviewList({ storeDetailInfo }: Props) {
-  const { storeId } = useParams();
-
-  const { data: reviewList, isLoading } = useReviewQuery(storeId as string);
+  const { data: reviewList, isLoading, isError } = useReviewQuery(storeDetailInfo.id.toString() as string);
 
   return (
     <>
@@ -31,6 +28,7 @@ function ReviewList({ storeDetailInfo }: Props) {
       ) : (
         <Empty>작성된 리뷰가 없습니다.</Empty>
       )}
+      {isError && <Empty>리뷰를 불러오는 중 문제가 발생했습니다.</Empty>}
     </>
   );
 }

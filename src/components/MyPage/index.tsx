@@ -8,6 +8,8 @@ import useUserOrderListQuery from 'components/OrderHistory/hooks/useUserOrderLis
 import RankRule from './RankRule';
 import calculateOrderCountInThisMonth from './utils/calculateOrderCountInThisMonth';
 import { nextRankInfo } from './utils/rank';
+import BottomMenu from 'components/common/BottomMenu';
+import LoginCheckComp from 'components/common/LoginCheckComp';
 
 export default function MyPage() {
   const userId = useUserId();
@@ -22,14 +24,16 @@ export default function MyPage() {
   return (
     <>
       <Header>마이페이지</Header>
-      <PrevButton isAbsolutePosition={true} />
-      <MyPageContainer>
-        <p className="speaker">
-          <i className="fa-solid fa-bullhorn"></i> {!isLoading && nextRankInfo(orderCount)}
-        </p>
-        <UserInfo orderCount={orderCount} />
-        <RankRule />
-      </MyPageContainer>
+      <LoginCheckComp>
+        <MyPageContainer>
+          <p className="speaker">
+            <i className="fa-solid fa-bullhorn"></i> {!isLoading && nextRankInfo(orderCount)}
+          </p>
+          <UserInfo isLoading={isLoading} orderCount={orderCount} />
+          <RankRule />
+        </MyPageContainer>
+      </LoginCheckComp>
+      <BottomMenu />
     </>
   );
 }

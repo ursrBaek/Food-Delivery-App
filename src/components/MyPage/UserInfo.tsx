@@ -5,7 +5,7 @@ import { useUserNickname } from 'store';
 import { checkRank } from './utils/rank';
 import LogoutBtn from './LogoutBtn';
 
-export default function UserInfo({ orderCount }: { orderCount: number }) {
+export default function UserInfo({ orderCount, isLoading }: { orderCount: number; isLoading: boolean }) {
   const nickname = useUserNickname();
   const { rank, medal } = checkRank(orderCount);
 
@@ -14,7 +14,7 @@ export default function UserInfo({ orderCount }: { orderCount: number }) {
       <UserRankInfo>
         <span className="medal">{medal}</span>
         <p>
-          <span className="rank">{rank}, </span>
+          <span className="rank">{isLoading ? '_' : rank}, </span>
           <span className="nickname"> {nickname} 💕</span>
         </p>
       </UserRankInfo>

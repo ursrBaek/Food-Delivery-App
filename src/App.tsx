@@ -15,15 +15,14 @@ function App() {
   useAuthState();
 
   useEffect(() => {
-    // 로컬스토리지 값 가져오기
-    if (userId) {
-      const recentStores = localStorage.getItem('recentStores-' + userId);
-      console.log();
-      if (recentStores) {
-        setRecentStore(JSON.parse(recentStores));
-      }
-      setRecentStoreLoading(false);
+    const recentStores = localStorage.getItem('recentStores-' + (userId || ''));
+    console.log();
+    if (recentStores) {
+      setRecentStore(JSON.parse(recentStores));
+    } else {
+      setRecentStore([]);
     }
+    setRecentStoreLoading(false);
   }, [userId, setRecentStore, setRecentStoreLoading]);
 
   return (

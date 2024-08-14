@@ -39,5 +39,6 @@ export interface IRecentStores {
   actions: {
     setRecentStoreLoading: (bool: boolean) => void;
     setRecentStore: (stores: StoreInfo[]) => void;
+    setInitRecentStores: () => void;
   };
 }
