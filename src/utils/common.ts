@@ -37,6 +37,8 @@ export function getCategory(storeId: string) {
     return 'chineseFood';
   } else if (id >= 40 && id <= 44) {
     return 'japaneseFood';
+  } else if (id >= 45 && id <= 49) {
+    return 'salad';
   }
 }
 
