@@ -1,6 +1,6 @@
 import { ref, set, update } from '@firebase/database';
 import { db } from '../../../firebase';
-import { useMutation, UseMutationResult } from '@tanstack/react-query';
+import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-query';
 import { getReviewApi } from 'components/StoreDetail/hooks/useReviewQuery';
 import { getCategory } from 'utils/common';
 
@@ -28,6 +28,8 @@ export const addReviewApi = async (reviewInfo: IReviewInfo) => {
   const { userId, storeId, review, key } = reviewInfo;
   await set(ref(db, `reviews/${storeId}/` + key), review);
 
+  // fetching 하지 않고 쿼리데이터 가져오는것도 가능하면 그렇게 하자!!!
+  // -------------
   const newReviewList = await getReviewApi(storeId);
 
   const reviewCount = newReviewList.length;
@@ -50,10 +52,26 @@ export const addReviewApi = async (reviewInfo: IReviewInfo) => {
 };
 
 export default function useReviewMutation(): UseMutationResult<void, Error, IReviewInfo> {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: addReviewApi,
     onError(err) {
       console.log(err);
+    },
+    onSuccess: (data, reviewInfo) => {
+      queryClient.invalidateQueries({
+        queryKey: ['reviews', reviewInfo.storeId],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ['storeDetail', reviewInfo.storeId],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ['storeListOfLikes', reviewInfo.userId],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ['storeListOfCategory'],
+      });
     },
   });
 }

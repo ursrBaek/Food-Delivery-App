@@ -14,6 +14,8 @@ const useStoreLikeQuery = (userId?: string, storeId?: string): UseQueryResult<IL
   useQuery({
     queryKey: ['isLike', userId, storeId],
     queryFn: () => getLikeStateApi(userId, storeId),
+    staleTime: 600000,
+    gcTime: 900000,
   });
 
 export default useStoreLikeQuery;

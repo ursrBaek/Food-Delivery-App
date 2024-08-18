@@ -27,6 +27,11 @@ export const userOrderListApi = async (userId: string): Promise<IUserOrderListIt
 };
 
 const useUserOrderListQuery = (userId: string): UseQueryResult<Array<IUserOrderListItemRes<(IOrderItem | null)[]>>, Error> =>
-  useQuery({ queryKey: ['userOrderList', userId], queryFn: () => userOrderListApi(userId) });
+  useQuery({
+    queryKey: ['userOrderList', userId],
+    queryFn: () => userOrderListApi(userId),
+    staleTime: 600000,
+    gcTime: 900000,
+  });
 
 export default useUserOrderListQuery;

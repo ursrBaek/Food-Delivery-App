@@ -23,7 +23,8 @@ const useReviewQuery = (storeId: string): UseQueryResult<IReview[], Error> =>
   useQuery({
     queryKey: ['reviews', storeId],
     queryFn: () => getReviewApi(storeId),
-    staleTime: 5000,
+    staleTime: 300000,
+    gcTime: 600000,
   });
 
 export default useReviewQuery;

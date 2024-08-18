@@ -1,5 +1,5 @@
 import Header from 'components/common/Header';
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import StoreInfo from './StoreInfo';
 import StoreOrderInfo from './StoreOrderInfo';
 import { MainBox } from './styles';

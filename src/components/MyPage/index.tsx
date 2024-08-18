@@ -1,5 +1,4 @@
 import Header from 'components/common/Header';
-import PrevButton from 'components/common/PrevButton';
 import React from 'react';
 import UserInfo from './UserInfo';
 import { MyPageContainer } from './styles';

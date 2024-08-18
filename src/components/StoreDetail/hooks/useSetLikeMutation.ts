@@ -52,5 +52,10 @@ export default function useSetLikeMutation(): UseMutationResult<
     onSettled: (data, error, likeSettingInfo) => {
       queryClient.invalidateQueries({ queryKey: ['isLike', likeSettingInfo?.userId, likeSettingInfo.storeId] });
     },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['storeListOfLikes'],
+      });
+    },
   });
 }

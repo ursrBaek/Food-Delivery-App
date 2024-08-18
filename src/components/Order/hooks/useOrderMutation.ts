@@ -2,7 +2,7 @@ import { child, push, ref, set } from '@firebase/database';
 import { db } from '../../../firebase';
 import { IOrderListObj, IUserOrderListItemReq, IUserOrderListItemRes } from 'types/responseTypes';
 import { getDataFromDB } from 'utils/getDataFromDB';
-import { useMutation, UseMutationResult } from '@tanstack/react-query';
+import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-query';
 
 export interface IOrderInfo {
   userId?: string;
@@ -21,11 +21,18 @@ const addOrderedInfoApi = async (orderInfo: IOrderInfo): Promise<IUserOrderListI
 };
 
 export default function useOrderMutation(): UseMutationResult<IUserOrderListItemRes<IOrderListObj> | undefined | null, Error, IOrderInfo> {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: addOrderedInfoApi,
     onError(err) {
       alert('주문처리 중 문제가 발생했습니다.');
       console.log(err);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['userOrderList'],
+      });
     },
   });
 }
