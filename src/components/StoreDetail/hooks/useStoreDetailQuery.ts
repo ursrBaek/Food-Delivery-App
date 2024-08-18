@@ -17,9 +17,10 @@ export const getStoreDetailApi = async (storeId: string): Promise<StoreDetailInf
 
 const useStoreDetailQuery = (storeId: string): UseQueryResult<StoreDetailInfo, Error> =>
   useQuery({
-    queryKey: ['storeList', storeId],
+    queryKey: ['storeDetail', storeId],
     queryFn: () => getStoreDetailApi(storeId),
-    staleTime: 3000,
+    staleTime: 300000,
+    gcTime: 600000,
   });
 
 export default useStoreDetailQuery;

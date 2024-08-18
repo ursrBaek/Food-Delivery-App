@@ -26,6 +26,8 @@ const useOrderDetailQuery = (userId: string, orderId: string): UseQueryResult<IU
   useQuery({
     queryKey: ['orderDetail', userId, orderId],
     queryFn: () => getOrderDetailApi(userId, orderId),
+    staleTime: 600000,
+    gcTime: 900000,
   });
 
 export default useOrderDetailQuery;

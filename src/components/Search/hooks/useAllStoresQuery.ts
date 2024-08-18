@@ -20,5 +20,6 @@ export const useAllStoresQuery = (): UseQueryResult<StoreIdListResponse | null, 
   useQuery({
     queryKey: ['allStores'],
     queryFn: () => getAllStoresApi(),
-    // 잘 안바뀌는 값. 오래 캐시해야됨.
+    staleTime: 600000,
+    gcTime: 900000,
   });

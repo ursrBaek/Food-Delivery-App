@@ -5,7 +5,6 @@ import { AuthButton, Error } from 'components/AuthTemplate/styles';
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
-import { useUserNickname } from 'store';
 
 const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const pwReg = /^[a-zA-Z0-9]{6,15}$/;

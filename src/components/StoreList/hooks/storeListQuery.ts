@@ -30,6 +30,8 @@ export const useStoreListOfCategoryQuery = (category: string): UseQueryResult<St
   return useQuery({
     queryKey: ['storeListOfCategory', category],
     queryFn: () => getStoreListOfCategoryApi(category),
+    staleTime: 300000,
+    gcTime: 600000,
   });
 };
 
@@ -66,4 +68,6 @@ export const useStoreListOfLikeQuery = (userId: string): UseQueryResult<StoreInf
   useQuery({
     queryKey: ['storeListOfLikes', userId],
     queryFn: () => getStoreListOfLikeApi(userId),
+    staleTime: 300000,
+    gcTime: 600000,
   });
