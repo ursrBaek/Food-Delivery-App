@@ -34,4 +34,4 @@ function MenuItem({ menu, idx, checked }: Props) {
   );
 }
 
-export default MenuItem;
+export default React.memo(MenuItem);

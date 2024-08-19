@@ -51,4 +51,4 @@ function OrderItem({ menuInfo, idx }: Props) {
   );
 }
 
-export default OrderItem;
+export default React.memo(OrderItem);

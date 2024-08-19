@@ -48,4 +48,4 @@ function BottomMenu() {
   );
 }
 
-export default BottomMenu;
+export default React.memo(BottomMenu);

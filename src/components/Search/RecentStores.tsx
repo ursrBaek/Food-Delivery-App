@@ -9,15 +9,17 @@ export default function RecentStores() {
   return (
     <div>
       <h2>최근 본 가게</h2>
-      <ul>
-        {isLoading ? (
-          <p>불러오는 중...</p>
-        ) : recentStores.length ? (
-          recentStores.map((storeInfo) => <StoreListItem storeInfo={storeInfo} key={storeInfo.id} />)
-        ) : (
-          <p>최근 조회한 가게가 없습니다.</p>
-        )}
-      </ul>
+      {isLoading ? (
+        <p className="infoMsg">불러오는 중...</p>
+      ) : recentStores.length ? (
+        <ul>
+          {recentStores.map((storeInfo) => (
+            <StoreListItem storeInfo={storeInfo} isDelBtn={true} key={storeInfo.id} />
+          ))}
+        </ul>
+      ) : (
+        <p className="infoMsg">최근 조회한 가게가 없습니다.</p>
+      )}
     </div>
   );
 }

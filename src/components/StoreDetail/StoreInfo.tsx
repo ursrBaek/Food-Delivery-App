@@ -21,4 +21,4 @@ function StoreInfo({ storeDetailInfo }: Props) {
   );
 }
 
-export default StoreInfo;
+export default React.memo(StoreInfo);

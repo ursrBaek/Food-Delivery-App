@@ -6,14 +6,17 @@ import { categoryName } from 'utils/common';
 
 interface Props {
   storeInfo: StoreInfo;
+  isDelBtn?: boolean;
 }
 
-export default function StoreListItem({ storeInfo }: Props) {
+export default function StoreListItem({ storeInfo, isDelBtn }: Props) {
   const { setRecentStore } = useRecentStoresActions();
   const recentStores = useRecentStores();
   const userId = useUserId();
 
   const clickDeleteBtn = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    if (!isDelBtn) return;
+
     e.preventDefault();
 
     const STORAGE_KEY = 'recentStores-' + (userId || '');
@@ -32,7 +35,7 @@ export default function StoreListItem({ storeInfo }: Props) {
           <p className="storeName">{storeInfo.storeName}</p>
           <p className="category">{categoryName[storeInfo.category]}</p>
         </div>
-        <i className="fa-solid fa-xmark" onClick={clickDeleteBtn}></i>
+        {isDelBtn && <i className="fa-solid fa-xmark" onClick={clickDeleteBtn}></i>}
       </Link>
     </li>
   );

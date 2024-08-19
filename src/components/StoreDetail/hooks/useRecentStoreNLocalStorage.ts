@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
-import { useRecentStores, useRecentStoresActions } from 'store';
+import { useRecentStores, useRecentStoresActions, useUserId } from 'store';
 import { StoreInfo } from 'types/responseTypes';
 
 const STORAGE_KEY_PREFIX = 'recentStores-';
 
-function useRecentStoreNLocalStorage(storeDetailInfo: StoreInfo | undefined, userId: string | undefined) {
+function useRecentStoreNLocalStorage(storeDetailInfo: StoreInfo | undefined) {
   const recentStores = useRecentStores();
+  const userId = useUserId();
   const { setRecentStore } = useRecentStoresActions();
 
   useEffect(() => {
