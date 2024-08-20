@@ -54,6 +54,11 @@ export const StyledHeader = styled.header`
     overflow: hidden;
     /* color: #d15c03; */
     color: #fff;
+    text-shadow:
+      -1px -1px 0 #333,
+      1px -1px 0 #333,
+      -1px 1px 0 #333,
+      1px 1px 0 #333;
     opacity: 1;
     transition: all 0.1s ease-in-out;
 
@@ -104,7 +109,7 @@ export const MenuWrapper = styled.div`
         .icon {
           width: 100%;
           /* color: #b19986; */
-          color: #a6a6a6;
+          color: #767676;
           font-size: 25px;
           line-height: 40px;
           vertical-align: bottom;
@@ -117,7 +122,7 @@ export const MenuWrapper = styled.div`
         span {
           font-family: 'jua';
           /* color: #b19986; */
-          color: #a6a6a6;
+          color: #767676;
           font-size: 14px;
         }
         &:hover {
