@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { StyledInputBox } from './styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
   searchText: string;
@@ -30,7 +32,7 @@ export default function SearchInput({ searchText, setSearchText }: Props) {
         onBlur={() => setIsFocused(false)}
         ref={inputRef}
       />
-      {searchText && <i className="fa-solid fa-xmark" onClick={resetInput}></i>}
+      {searchText && <FontAwesomeIcon icon={faXmark} onClick={resetInput} />}
     </StyledInputBox>
   );
 }

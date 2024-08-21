@@ -2,6 +2,8 @@ import React from 'react';
 import { ReviewItemBox } from './styles';
 import { IReview } from 'types/responseTypes';
 import getCurrentDate from 'utils/getCurrentDate';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
   reviewInfo: IReview;
@@ -15,7 +17,7 @@ function ReviewItem({ reviewInfo }: Props) {
       <p className="review-nick">{nickname}</p>
       <p className="review-date">
         <span>
-          <i className="fas fa-star"></i> {star}
+          <FontAwesomeIcon icon={faStar} /> {star}
         </span>
         {getCurrentDate(date)}
       </p>

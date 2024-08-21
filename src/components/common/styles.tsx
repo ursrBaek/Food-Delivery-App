@@ -106,31 +106,28 @@ export const MenuWrapper = styled.div`
         display: inline-block;
         text-align: center;
         width: 100%;
-        .icon {
+        color: #767676;
+        svg {
           width: 100%;
-          /* color: #b19986; */
-          color: #767676;
           font-size: 25px;
-          line-height: 40px;
-          vertical-align: bottom;
-
-          &.select,
-          &.select + span {
-            color: #d15c03;
-          }
+          margin: 8px 0;
         }
         span {
           font-family: 'jua';
-          /* color: #b19986; */
-          color: #767676;
+          /* color: #767676; */
           font-size: 14px;
         }
-        &:hover {
-          .icon,
-          span {
-            color: #d15c03;
-          }
+      }
+      &:hover {
+        a svg,
+        a span {
+          color: #d15c03;
         }
+      }
+
+      &.select svg,
+      &.select span {
+        color: #d15c03;
       }
     }
   }

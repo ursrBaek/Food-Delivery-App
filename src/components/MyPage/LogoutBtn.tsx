@@ -1,7 +1,9 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { auth } from '../../firebase';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { useOrderListAction, useRecentStoresActions, useUserActions, useUserId } from 'store';
+import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 function LogoutBtn() {
   const { setInitUser } = useUserActions();
@@ -25,7 +27,7 @@ function LogoutBtn() {
 
   return (
     <button onClick={logOut}>
-      <i className="fa-solid fa-arrow-right-from-bracket"></i>
+      <FontAwesomeIcon icon={faArrowRightFromBracket} />
       <span>로그아웃</span>
     </button>
   );

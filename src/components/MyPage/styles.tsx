@@ -91,7 +91,7 @@ export const UserDashboard = styled.div`
   button {
     font-family: 'jua';
     text-align: center;
-    i {
+    svg {
       font-size: 25px;
       margin-bottom: 10px;
       text-shadow: 0px 0px 3px #a1a1a1;

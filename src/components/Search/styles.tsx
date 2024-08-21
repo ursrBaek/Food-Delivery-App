@@ -91,7 +91,7 @@ export const SearchContentsContainer = styled.div`
             color: #8b8b8b;
           }
         }
-        i {
+        svg {
           width: 39px;
           color: #8b8b8b;
           padding: 10px;

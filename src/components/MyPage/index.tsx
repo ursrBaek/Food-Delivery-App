@@ -9,6 +9,8 @@ import calculateOrderCountInThisMonth from './utils/calculateOrderCountInThisMon
 import { nextRankInfo } from './utils/rank';
 import BottomMenu from 'components/common/BottomMenu';
 import LoginCheckComp from 'components/common/LoginCheckComp';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBullhorn } from '@fortawesome/free-solid-svg-icons';
 
 export default function MyPage() {
   const userId = useUserId();
@@ -26,7 +28,7 @@ export default function MyPage() {
       <LoginCheckComp>
         <MyPageContainer>
           <p className="speaker">
-            <i className="fa-solid fa-bullhorn"></i> {!isLoading && nextRankInfo(orderCount)}
+            <FontAwesomeIcon icon={faBullhorn} /> {!isLoading && nextRankInfo(orderCount)}
           </p>
           <UserInfo isLoading={isLoading} orderCount={orderCount} />
           <RankRule />

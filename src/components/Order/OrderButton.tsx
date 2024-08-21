@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { serverTimestamp } from 'firebase/database';
 import useOrderMutation, { IOrderInfo } from './hooks/useOrderMutation';
 import getCurrentDate from 'utils/getCurrentDate';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 
 function OrderButton() {
   const navigate = useNavigate();
@@ -50,7 +52,7 @@ function OrderButton() {
   return (
     <>
       <StyledOrderButton onClick={clickOrderButton} disabled={isPending}>
-        <i className="fa-solid fa-utensils"></i> <span className="order-price">{totalAmount.toLocaleString()} 원 </span> 배달 주문하기
+        <FontAwesomeIcon icon={faUtensils} /> <span className="order-price">{totalAmount.toLocaleString()} 원 </span> 배달 주문하기
       </StyledOrderButton>
       {isPending && (
         <MessageComp>

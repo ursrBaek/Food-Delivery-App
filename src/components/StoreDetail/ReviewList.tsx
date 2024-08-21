@@ -2,6 +2,8 @@ import { StoreDetailInfo } from 'types/responseTypes';
 import ReviewItem from './ReviewItem';
 import { Empty, Loading, ReviewInfoBox } from './styles';
 import useReviewQuery from './hooks/useReviewQuery';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
   storeDetailInfo: StoreDetailInfo;
@@ -15,7 +17,7 @@ function ReviewList({ storeDetailInfo }: Props) {
       <ReviewInfoBox>
         <span>
           <span>
-            <i className="fas fa-star"></i> {storeDetailInfo.storeStar}
+            <FontAwesomeIcon icon={faStar} /> {storeDetailInfo.storeStar}
           </span>
           <span>|</span>
           <span>리뷰 {storeDetailInfo.reviewCount}개</span>

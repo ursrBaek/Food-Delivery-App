@@ -2,6 +2,9 @@ import React from 'react';
 import { useUserId } from 'store';
 import useStoreLikeQuery from './hooks/useStoreLikeQuery';
 import useSetLikeMutation, { ILikeSettingInfo } from './hooks/useSetLikeMutation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as faHeart_R } from '@fortawesome/free-regular-svg-icons';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 function LoggedInLikeBtn({ storeId }: { storeId: number }) {
   const userId = useUserId();
@@ -22,7 +25,7 @@ function LoggedInLikeBtn({ storeId }: { storeId: number }) {
 
   return (
     <button onClick={clickLikeButton}>
-      {!(isLoading || isError) && likesData?.currentLikesState ? <i className="fas fa-heart dib" /> : <i className="far fa-heart dib" />}{' '}
+      {!(isLoading || isError) && likesData?.currentLikesState ? <FontAwesomeIcon icon={faHeart} /> : <FontAwesomeIcon icon={faHeart_R} />}{' '}
       찜하기
     </button>
   );

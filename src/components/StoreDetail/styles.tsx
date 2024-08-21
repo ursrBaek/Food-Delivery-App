@@ -26,11 +26,6 @@ export const StyledInfoBox = styled.div`
     color: #3c3c3c;
     font-size: 23px;
     margin: 15px auto;
-    .star {
-      i {
-        color: rgb(246, 246, 0);
-      }
-    }
   }
   button {
     font-family: 'yeonsung';

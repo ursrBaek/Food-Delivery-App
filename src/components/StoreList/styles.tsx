@@ -24,7 +24,7 @@ export const StyledContainer = styled.ul`
     .store-description {
       p {
         margin-bottom: 5px;
-        i {
+        svg {
           margin-right: 5px;
         }
       }

@@ -149,7 +149,7 @@ export const StyledOrderButton = styled.button`
     background-color: #f07415;
   }
 
-  i {
+  svg {
     margin-right: 10px;
     margin-bottom: 3px;
   }

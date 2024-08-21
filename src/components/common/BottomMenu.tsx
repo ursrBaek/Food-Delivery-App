@@ -1,6 +1,9 @@
 import React from 'react';
 import { MenuWrapper } from './styles';
 import { Link, useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileInvoice, faHouse, faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 function BottomMenu() {
   const { pathname } = useLocation();
@@ -13,33 +16,33 @@ function BottomMenu() {
   return (
     <MenuWrapper>
       <ul>
-        <li>
+        <li className={isHome ? ' select' : ''}>
           <Link to="/">
-            <i className={'icon fa-solid fa-house' + (isHome ? ' select' : '')} />
+            <FontAwesomeIcon icon={faHouse} />
             <span>홈</span>
           </Link>
         </li>
         <li>
           <Link to="/search">
-            <i className="icon fa-solid fa-magnifying-glass"></i>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
             <span>검색</span>
           </Link>
         </li>
-        <li>
+        <li className={isLikes ? ' select' : ''}>
           <Link to="/likes">
-            <i className={'icon fa-regular fa-heart' + (isLikes ? ' select' : '')}></i>
+            <FontAwesomeIcon icon={faHeart} />
             <span>찜한가게</span>
           </Link>
         </li>
-        <li>
+        <li className={isOrderHistory ? ' select' : ''}>
           <Link to="/orderHistory">
-            <i className={'icon fa-solid fa-file-invoice' + (isOrderHistory ? ' select' : '')}></i>
+            <FontAwesomeIcon icon={faFileInvoice} />
             <span>주문내역</span>
           </Link>
         </li>
-        <li>
+        <li className={isMyPage ? ' select' : ''}>
           <Link to="/mypage">
-            <i className={'icon fa-solid fa-user' + (isMyPage ? ' select' : '')} />
+            <FontAwesomeIcon icon={faUser} />
             <span>MY</span>
           </Link>
         </li>

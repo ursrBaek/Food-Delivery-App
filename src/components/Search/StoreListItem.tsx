@@ -1,3 +1,5 @@
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useRecentStores, useRecentStoresActions, useUserId } from 'store';
@@ -14,7 +16,7 @@ export default function StoreListItem({ storeInfo, isDelBtn }: Props) {
   const recentStores = useRecentStores();
   const userId = useUserId();
 
-  const clickDeleteBtn = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const clickDeleteBtn = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     if (!isDelBtn) return;
 
     e.preventDefault();
@@ -35,7 +37,7 @@ export default function StoreListItem({ storeInfo, isDelBtn }: Props) {
           <p className="storeName">{storeInfo.storeName}</p>
           <p className="category">{categoryName[storeInfo.category]}</p>
         </div>
-        {isDelBtn && <i className="fa-solid fa-xmark" onClick={clickDeleteBtn}></i>}
+        {isDelBtn && <FontAwesomeIcon icon={faXmark} onClick={clickDeleteBtn} />}
       </Link>
     </li>
   );

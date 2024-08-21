@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { useUserNickname } from 'store';
 import { checkRank } from './utils/rank';
 import LogoutBtn from './LogoutBtn';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileLines, faHeart } from '@fortawesome/free-regular-svg-icons';
 
 export default function UserInfo({ orderCount, isLoading }: { orderCount: number; isLoading: boolean }) {
   const nickname = useUserNickname();
@@ -20,11 +22,11 @@ export default function UserInfo({ orderCount, isLoading }: { orderCount: number
       </UserRankInfo>
       <UserDashboard>
         <Link to="/orderHistory">
-          <i className="fa-regular fa-file-lines"></i>
+          <FontAwesomeIcon icon={faFileLines} />
           <span>주문내역</span>
         </Link>
         <Link to="/likes">
-          <i className="fa-regular fa-heart"></i>
+          <FontAwesomeIcon icon={faHeart} />
           <span>나의 찜</span>
         </Link>
         <LogoutBtn />

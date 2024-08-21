@@ -1,3 +1,6 @@
+import { faClock } from '@fortawesome/free-regular-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { StoreInfo } from 'types/responseTypes';
@@ -14,11 +17,11 @@ function StoreItem({ store }: Props) {
         <div className="store-description">
           <p className="store-name">{store.storeName}</p>
           <p>
-            <i className="fas fa-star"></i>
+            <FontAwesomeIcon icon={faStar} />
             {store.storeStar} ({store.reviewCount})
           </p>
           <p>
-            <i className="far fa-clock"></i>
+            <FontAwesomeIcon icon={faClock} />
             {store.deliveryTime}분 / 최소주문 {store.minPrice.toLocaleString()}원
           </p>
           <p>배달팁 {store.deliveryTip.toLocaleString()}원</p>
