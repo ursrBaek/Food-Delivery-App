@@ -29,16 +29,16 @@ export const StyledSection = styled.section<SectionProps>`
     overflow: hidden;
     background-color: #ddd;
     .bannerItemContainer {
-      width: auto;
       display: flex;
       transform: translateX(${(props: SectionProps) => `calc(${(props.$idx + 1) * 100}% * -1)`});
-      img {
-        display: inline-block;
+      picture {
         width: 100%;
-        min-width: 100%;
-        height: auto;
-        aspect-ratio: 675 / 315;
-        object-fit: cover;
+        img {
+          display: block;
+          min-width: 100%;
+          aspect-ratio: 409 / 191;
+          object-fit: cover;
+        }
       }
 
       &.onAnimate {
