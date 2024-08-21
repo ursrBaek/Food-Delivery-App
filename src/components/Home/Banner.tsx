@@ -45,6 +45,15 @@ function Banner() {
   }, 500);
 
   useEffect(() => {
+    const images = [ad1, ad27, ad14, ad16, ad18, ad1p, ad27p, ad14p, ad16p, ad18p];
+
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
+  useEffect(() => {
     let timerId: NodeJS.Timeout;
     if (idx === 5) {
       timerId = setTimeout(() => {
@@ -72,6 +81,7 @@ function Banner() {
       clearInterval(intervalId);
     };
   }, [idx]);
+
   return (
     <StyledSection $idx={idx}>
       <h2 className="a11y-hidden">광고 배너</h2>

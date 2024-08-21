@@ -5,12 +5,16 @@ interface CategoryItemProps {
   path: string;
   img: string;
   alt: string;
+  avif: string;
 }
 
-const CategoryItem: React.FC<CategoryItemProps> = ({ name, path, img, alt }) => (
+const CategoryItem: React.FC<CategoryItemProps> = ({ name, path, img, alt, avif }) => (
   <li>
     <Link to={`/store/${path}`}>
-      <img src={img} alt={alt} />
+      <picture>
+        <source srcSet={avif} type="image/webp" />
+        <img src={img} alt={alt} />
+      </picture>
       {name}
     </Link>
   </li>

@@ -1,8 +1,12 @@
 import styled from 'styled-components';
-import spicyImage from '../../assets/images/spicyImage.png';
-import hotImage from '../../assets/images/hotImage.png';
-import coolImage from '../../assets/images/coolImage.png';
+import spicyImage from '../../assets/images/spicyImage.jpg';
+import hotImage from '../../assets/images/hotImage.jpg';
+import coolImage from '../../assets/images/coolImage.jpg';
+import spicyImage_p from '../../assets/images/spicyImage_p.webp';
+import hotImage_p from '../../assets/images/hotImage_p.webp';
+import coolImage_p from '../../assets/images/coolImage_p.webp';
 import orangePaper from '../../assets/images/orangePaper.jpg';
+import orangePaper_p from '../../assets/images/orangePaper_p.webp';
 export const MainBox = styled.main`
   padding-top: 15px;
   width: 100%;
@@ -81,6 +85,10 @@ export const AddSection = styled.section`
   font-size: 19px;
   font-family: 'hanna';
   background-color: #ddd;
+
+  @supports (background-image: url(${orangePaper_p})) {
+    background-image: url(${orangePaper_p});
+  }
 `;
 
 export const CategoryList = styled.ul`
@@ -154,5 +162,19 @@ export const MenuRecommendationSection = styled.section`
   }
   div:last-child {
     background-image: url(${coolImage});
+  }
+
+  @supports (background-image: url(${spicyImage_p})) {
+    div:first-child {
+      background-image: url(${spicyImage_p});
+    }
+
+    div:nth-child(2) {
+      background-image: url(${hotImage_p});
+    }
+
+    div:last-child {
+      background-image: url(${coolImage_p});
+    }
   }
 `;
