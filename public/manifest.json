@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Delivery App 오늘 뭐먹지",
+  "name": "음식 배달 주문 웹 어플리케이션 프로젝트",
   "icons": [
     {
       "src": "favicon.ico",

@@ -1,15 +1,17 @@
-import Bill from 'components/Bill';
+import { lazy } from 'react';
+
 import Home from 'components/Home';
-import Login from 'components/Login';
-import MyPage from 'components/MyPage';
-import Order from 'components/Order';
-import OrderHistory from 'components/OrderHistory';
-import OrderInfoDetail from 'components/OrderInfoDetail';
-import Search from 'components/Search';
-import SignUp from 'components/SignUp';
-import StoreDetail from 'components/StoreDetail';
-import StoreList from 'components/StoreList';
-import Review from 'components/Review';
+const Bill = lazy(() => import('components/Bill'));
+const Login = lazy(() => import('components/Login'));
+const MyPage = lazy(() => import('components/MyPage'));
+const Order = lazy(() => import('components/Order'));
+const OrderHistory = lazy(() => import('components/OrderHistory'));
+const OrderInfoDetail = lazy(() => import('components/OrderInfoDetail'));
+const Search = lazy(() => import('components/Search'));
+const SignUp = lazy(() => import('components/SignUp'));
+const StoreDetail = lazy(() => import('components/StoreDetail'));
+const StoreList = lazy(() => import('components/StoreList'));
+const Review = lazy(() => import('components/Review'));
 
 const publicRoutes = [
   { path: '/', component: <Home /> },
