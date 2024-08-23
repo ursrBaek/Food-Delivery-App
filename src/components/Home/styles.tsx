@@ -39,9 +39,11 @@ export const StyledSection = styled.section<SectionProps>`
         width: 100%;
         img {
           display: block;
-          min-width: 100%;
           aspect-ratio: 409 / 191;
           object-fit: cover;
+          @media (min-width: 430px) {
+            width: 409px;
+          }
         }
       }
 
@@ -100,11 +102,13 @@ export const CategoryList = styled.ul`
   justify-content: space-between;
   background-color: #ffffff;
   box-shadow: 0 2px 10px -3px rgb(0 0 0 / 30%);
+  width: 95%;
 
   li {
     width: 20%;
     text-align: center;
     a {
+      width: 100%;
       display: flex;
       flex-flow: column nowrap;
       align-items: center;
@@ -114,11 +118,16 @@ export const CategoryList = styled.ul`
       color: #333;
       img {
         width: 78%;
+        aspect-ratio: 1/1;
         background-color: #fff3e0;
         border-radius: 30%;
         padding: 3px;
         transition: all ease-out 0.3s;
         margin-bottom: 3px;
+
+        @media (min-width: 430px) {
+          width: 61px;
+        }
       }
     }
 
@@ -134,7 +143,6 @@ export const MenuRecommendationSection = styled.section`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  max-height: 300px;
   padding: 0 2.5%;
   margin-bottom: 2.5%;
   div {
@@ -144,6 +152,7 @@ export const MenuRecommendationSection = styled.section`
     background-size: cover;
     border-radius: 5px;
     width: 32%;
+    height: 146px;
     padding: 3%;
     display: flex;
     flex-flow: column wrap;

@@ -45,6 +45,7 @@ export const StyledHeader = styled.header`
 
   h1 {
     margin: 0 auto;
+    height: 27px;
     text-align: center;
     font-size: 27px;
     font-family: 'hanna';
@@ -52,7 +53,6 @@ export const StyledHeader = styled.header`
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    /* color: #d15c03; */
     color: #fff;
     text-shadow:
       -1px -1px 0 #333,
@@ -114,7 +114,6 @@ export const MenuWrapper = styled.div`
         }
         span {
           font-family: 'jua';
-          /* color: #767676; */
           font-size: 14px;
         }
       }
